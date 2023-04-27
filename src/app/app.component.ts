@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MyButtonConfig } from './my-button-config';
+import { MyButtonConfig } from './configs/my-button-config/my-button-config';
+
 
 
 
