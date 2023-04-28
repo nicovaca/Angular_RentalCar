@@ -4,9 +4,16 @@
   </mat-toolbar>
 </p>
 
+
 <app-my-button
   [buttonConfig]="bottoneHome"></app-my-button>
 
-<br><br>
+
 <app-my-button
   [buttonConfig]="bottoneElimina"></app-my-button>
+
+<br><br>
+<app-my-table
+  [tableConfig]="headersTable"
+  [data]="data">
+</app-my-table>

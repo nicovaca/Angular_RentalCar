@@ -9,11 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { MyButtonComponent } from './components/my-button/my-button.component';
+import { MyTableComponent } from './components/my-table/my-table.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyButtonComponent
+    MyButtonComponent,
+    MyTableComponent
   ],
   imports: [
     BrowserModule,

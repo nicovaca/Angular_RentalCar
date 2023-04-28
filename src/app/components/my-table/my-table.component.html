@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <ng-container *ngFor="let header of tableConfig.headers">
+        <th scope="col">{{header.label}}</th>
+      </ng-container>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let object of data  ">
+      <tr>
+
+        <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
+        <!--<td *ngFor="let header of tableConfig.headers">{{getValue(header.key, object)}}</td> -->
+
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+
