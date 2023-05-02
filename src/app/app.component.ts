@@ -30,7 +30,9 @@ export class AppComponent {
       {key: "nome", label: "Nome"},
       {key: "cognome", label: "Cognome"},
       {key: "email", label: "Email"}
-    ]
+    ],
+    order: {defaultColumn: "nome", orderType: "desc"}
+
   }
 
   data: Utenti[] = utenti;

@@ -12,18 +12,28 @@ import { MyButtonComponent } from './components/my-button/my-button.component';
 import { MyTableComponent } from './components/my-table/my-table.component';
 
 
+//Pipe
+import { SortPipe } from './components/my-table/pipe/pipe.pipe';
+
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MyButtonComponent,
-    MyTableComponent
+    MyTableComponent,
+    SortPipe
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
