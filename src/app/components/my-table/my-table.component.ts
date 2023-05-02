@@ -13,6 +13,7 @@ export class MyTableComponent implements OnInit {
 
   key!: string;
   orderType!: string;
+  enable: boolean = false;
 
   /* getValue(key:string, object:any):string {
    return object[key];
@@ -23,6 +24,7 @@ export class MyTableComponent implements OnInit {
     this.orderType = this.tableConfig.order.orderType;
   }
 
+
   sort(key: string) {
     this.key = key;
     if (this.orderType == "desc") {
@@ -30,5 +32,6 @@ export class MyTableComponent implements OnInit {
     } else {
       this.orderType = "desc"
     }
+    this.enable = true;
   }
 }

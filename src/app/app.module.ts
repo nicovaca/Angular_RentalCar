@@ -12,6 +12,7 @@ import { MyButtonComponent } from './components/my-button/my-button.component';
 import { MyTableComponent } from './components/my-table/my-table.component';
 
 
+
 //Pipe
 import { SortPipe } from './components/my-table/pipe/pipe.pipe';
 
@@ -33,6 +34,7 @@ import { SortPipe } from './components/my-table/pipe/pipe.pipe';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+
 
   ],
   providers: [],
