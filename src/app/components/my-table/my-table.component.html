@@ -2,12 +2,25 @@
 
 
 <div class="container">
+  <!--Filtro-->
+  <div class="form-group">
+
+    <select class="form-select" [(ngModel)]="filterKey">
+      <option *ngFor="let column of tableConfig.search.columns">{{column}}</option>
+    </select>
+
+   <input type="text" class="form-control" [(ngModel)]="filter" placeholder="Cerca">
+
+  </div>
+
+
+
   <table class="table table-striped">
     <thead>
 
     <tr>
-      <ng-container *ngFor="let header of tableConfig.headers">
-        <th scope="col" (click)="sort(header.key)">{{header.label}}&nbsp;
+      <ng-container *ngFor="let header of tableConfig.headers" >
+        <th scope="col" (click)="sort(header.key)" >{{header.label}}&nbsp;
           <!--<i class="fa fa-sort" [ngClass]="orderType === 'asc' && !enable ? 'fa fa-sort-up' : 'fa fa-sort-down'"></i>-->
           <i *ngIf="!enable" class="fa fa-sort"></i>
           <i *ngIf="orderType==='desc' && enable" class="fa fa-sort-up"></i>
@@ -18,13 +31,13 @@
 
     </thead>
     <tbody>
-    <ng-container *ngFor="let object of data | sortPipe : key:  orderType ">
+    <ng-container *ngFor="let object of data | sortPipe : key:  orderType | filterPipe: filter :filterKey">
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
         <!--<td *ngFor="let header of tableConfig.headers">{{getValue(header.key, object)}}</td> -->
-
       </tr>
+
     </ng-container>
     </tbody>
   </table>

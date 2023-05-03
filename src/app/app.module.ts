@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
 
@@ -15,6 +16,8 @@ import { MyTableComponent } from './components/my-table/my-table.component';
 
 //Pipe
 import { SortPipe } from './components/my-table/pipe/pipe.pipe';
+import { FilterPipePipe } from './components/my-table/pipe/filter-pipe.pipe';
+
 
 
 
@@ -26,7 +29,8 @@ import { SortPipe } from './components/my-table/pipe/pipe.pipe';
     AppComponent,
     MyButtonComponent,
     MyTableComponent,
-    SortPipe
+    SortPipe,
+    FilterPipePipe
 
   ],
   imports: [
@@ -34,8 +38,7 @@ import { SortPipe } from './components/my-table/pipe/pipe.pipe';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-
-
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

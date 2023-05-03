@@ -31,8 +31,8 @@ export class AppComponent {
       {key: "cognome", label: "Cognome"},
       {key: "email", label: "Email"}
     ],
-    order: {defaultColumn: "nome", orderType: "desc"}
-
+    order: {defaultColumn: "nome", orderType: "desc"},
+    search: {columns:["nome","cognome","email"]}
   }
 
   data: Utenti[] = utenti;

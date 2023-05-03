@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
 
+
 @Component({
   selector: 'app-my-table',
   templateUrl: './my-table.component.html',
@@ -14,6 +15,8 @@ export class MyTableComponent implements OnInit {
   key!: string;
   orderType!: string;
   enable: boolean = false;
+  filter: any;
+  filterKey: any;
 
   /* getValue(key:string, object:any):string {
    return object[key];
