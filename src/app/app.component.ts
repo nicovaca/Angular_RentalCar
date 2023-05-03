@@ -29,7 +29,8 @@ export class AppComponent {
     headers: [
       {key: "nome", label: "Nome"},
       {key: "cognome", label: "Cognome"},
-      {key: "email", label: "Email"}
+      {key: "email", label: "Email"},
+      {key: "eta", label: "Età"}
     ],
     order: {defaultColumn: "nome", orderType: "desc"},
     search: {columns:["nome","cognome","email"]}
