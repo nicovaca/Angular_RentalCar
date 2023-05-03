@@ -11,13 +11,13 @@ export class FilterPipePipe implements PipeTransform {
     if (value.length === 0 || !filterString) {
       return value;
     }
-    let filtered: any[] = [];
-    for (let user of value) {
-      if (user[property].toLowerCase().includes(filterString.toLowerCase())) {
-        filtered.push(user);
+    let filteredData: any[] = [];
+    for (let data of value) {
+      if (data[property].toLowerCase().includes(filterString.toLowerCase())) {
+        filteredData.push(data);
       }
     }
-    return filtered;
+    return filteredData;
   }
 
 }

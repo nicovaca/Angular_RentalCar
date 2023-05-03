@@ -19,9 +19,10 @@ import {MatIconModule} from '@angular/material/icon';
 
 
 //Pipe
-import { SortPipe } from './components/my-table/pipe/pipe.pipe';
+
 import { FilterPipePipe } from './components/my-table/pipe/filter-pipe.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SortPipePipe } from './components/my-table/pipe/sort-pipe.pipe';
 
 
 
@@ -34,8 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     MyButtonComponent,
     MyTableComponent,
-    SortPipe,
-    FilterPipePipe
+    FilterPipePipe,
+    SortPipePipe
 
   ],
   imports: [

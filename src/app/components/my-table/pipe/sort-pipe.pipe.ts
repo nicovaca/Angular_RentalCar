@@ -1,13 +1,11 @@
-import { Injectable, Pipe, PipeTransform } from '@angular/core';
-
-
+import { Pipe, PipeTransform } from '@angular/core';
 export type SortOrder = 'asc' | 'desc';
 
-@Injectable()
 @Pipe({
-  name: 'sortPipe',
+  name: 'sortPipe'
 })
-export class SortPipe implements PipeTransform {
+export class SortPipePipe implements PipeTransform {
+
   transform(list:any, key: string, order: string): any[] {
     if(order === 'asc') {
       order ='desc';
@@ -38,4 +36,5 @@ export class SortPipe implements PipeTransform {
       );
     };
   }
+
 }
