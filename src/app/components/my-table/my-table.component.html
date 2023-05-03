@@ -1,26 +1,35 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-
 <div class="container">
   <!--Filtro-->
-  <div class="form-group">
 
-    <select class="form-select" [(ngModel)]="filterKey">
-      <option *ngFor="let column of tableConfig.search.columns">{{column}}</option>
-    </select>
+  <div class="form-inline">
+    <mat-form-field appearance="fill">
+      <mat-label>Filtra per:</mat-label>
+      <mat-select [(ngModel)]="filterKey" name="filter">
+        <mat-option *ngFor="let column of tableConfig.search.columns" [value]="column">
+          {{column}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-   <input type="text" class="form-control" [(ngModel)]="filter" placeholder="Cerca">
-
+    <mat-form-field class="example-form-field">
+      <mat-label>Cerca</mat-label>
+      <input matInput type="search" [(ngModel)]="filter">
+      <button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="filter=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
 
 
-
+  <!--Tabella-->
   <table class="table table-striped">
     <thead>
 
     <tr>
-      <ng-container *ngFor="let header of tableConfig.headers" >
-        <th scope="col" (click)="sort(header.key)" >{{header.label}}&nbsp;
+      <ng-container *ngFor="let header of tableConfig.headers">
+        <th scope="col" (click)="sort(header.key)">{{header.label}}&nbsp;
           <!--<i class="fa fa-sort" [ngClass]="orderType === 'asc' && !enable ? 'fa fa-sort-up' : 'fa fa-sort-down'"></i>-->
           <i *ngIf="!enable" class="fa fa-sort"></i>
           <i *ngIf="orderType==='desc' && enable" class="fa fa-sort-up"></i>
@@ -42,6 +51,8 @@
     </tbody>
   </table>
 </div>
+
+
 
 
 
