@@ -40,7 +40,7 @@
 
     </thead>
     <tbody>
-    <ng-container *ngFor="let object of data | sortPipe : key:  orderType | filterPipe: filter :filterKey">
+    <ng-container *ngFor="let object of data  | filterPipe: filter :filterKey | sortPipe : key:  orderType">
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
