@@ -30,7 +30,7 @@
     <tr class="table-active">
       <ng-container *ngFor="let header of tableConfig.headers">
         <th scope="col" (click)="sort(header.key)">{{header.label}}&nbsp;
-          <!--<i class="fa fa-sort" [ngClass]="orderType === 'asc' && !enable ? 'fa fa-sort-up' : 'fa fa-sort-down'"></i>-->
+
           <i *ngIf="!enable" class="fa fa-sort"></i>
           <i *ngIf="orderType==='desc' && enable" class="fa fa-sort-up"></i>
           <i *ngIf="orderType==='asc' && enable" class="fa fa-sort-down"></i>
@@ -44,7 +44,7 @@
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
-        <!--<td *ngFor="let header of tableConfig.headers">{{getValue(header.key, object)}}</td> -->
+
 
       </tr>
 

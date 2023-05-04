@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-export type SortOrder = 'asc' | 'desc';
+
 
 @Pipe({
   name: 'sortPipe'

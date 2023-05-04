@@ -18,9 +18,7 @@ export class MyTableComponent implements OnInit {
   filter: any;
   filterKey: any;
 
-  /* getValue(key:string, object:any):string {
-   return object[key];
- }*/
+
 
   ngOnInit(): void {
     this.key = this.tableConfig.order.defaultColumn;

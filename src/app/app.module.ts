@@ -19,7 +19,6 @@ import {MatIconModule} from '@angular/material/icon';
 
 
 //Pipe
-
 import { FilterPipePipe } from './components/my-table/pipe/filter-pipe.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SortPipePipe } from './components/my-table/pipe/sort-pipe.pipe';
