@@ -33,7 +33,8 @@ export class AppComponent {
       {key: "eta", label: "Età"}
     ],
     order: {defaultColumn: "nome", orderType: "desc"},
-    search: {columns:["nome","cognome","email"]}
+    search: {columns: ["nome", "cognome", "email"]},
+    pagination: {itemPerPage:5, itemPerPageOptions:[5,10,15]}
   }
 
   data: Utenti[] = utenti;

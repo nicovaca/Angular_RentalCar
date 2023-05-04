@@ -22,6 +22,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { FilterPipePipe } from './components/my-table/pipe/filter-pipe.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SortPipePipe } from './components/my-table/pipe/sort-pipe.pipe';
+import { PaginationPipe } from './components/my-table/pipe/pagination.pipe';
 
 
 
@@ -35,7 +36,8 @@ import { SortPipePipe } from './components/my-table/pipe/sort-pipe.pipe';
     MyButtonComponent,
     MyTableComponent,
     FilterPipePipe,
-    SortPipePipe
+    SortPipePipe,
+    PaginationPipe
 
   ],
   imports: [
