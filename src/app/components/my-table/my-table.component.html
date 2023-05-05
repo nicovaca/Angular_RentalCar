@@ -40,7 +40,8 @@
 
     </thead>
     <tbody>
-    <ng-container *ngFor="let object of data | pagination :currentPage:itemPerPage | filterPipe: filter :filterKey | sortPipe : key:  orderType">
+    <ng-container
+      *ngFor="let object of data | pagination :currentPage:itemPerPage | filterPipe: filter :filterKey | sortPipe : key:  orderType">
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
@@ -58,7 +59,7 @@
     <ul class="pagination d-inline-flex">
 
       <!-- first button -->
-      <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'" >
+      <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'">
         <button class="page-link" (click)="selectPageNumber(1)">Fist Page</button>
       </li>
 
@@ -69,9 +70,9 @@
 
       <!-- range of pages list -->
       <li class="page-item"
-        *ngFor="let page of pages"
-        [ngClass]="{ 'page-item': true, active: currentPage === page }"
-        (click)="changePage(page)">
+          *ngFor="let page of pages"
+          [ngClass]="{ 'page-item': true, active: currentPage === page }"
+          (click)="changePage(page)">
         <span class="page-link">{{ page }}</span>
       </li>
 
@@ -84,20 +85,20 @@
       </li>
 
       <!-- last button -->
-      <li [class]="currentPage === totalPages.length ? 'page-item disabled' : 'page-item'" >
+      <li [class]="currentPage === totalPages.length ? 'page-item disabled' : 'page-item'">
         <button class="page-link" (click)="selectPageNumber(totalPages.length)">Last Page</button>
       </li>
 
       <!--Select number of items-->&nbsp;&nbsp;&nbsp;
       <li class="page-item">
         <label for="currentPage">Item for page:</label>
-        <select id="currentPage" (change)="selectItemPerPage()">
-          <option *ngFor="let number of tableConfig.pagination.itemPerPageOptions">{{number}}</option>
+        <select id="currentPage" (change)="selectItemPerPage($event)">
+          <option [selected]="number===itemPerPage" *ngFor="let number of tableConfig.pagination.itemPerPageOptions">{{number}}</option>
+          <option>All</option>
         </select>
       </li>
     </ul>
   </nav>
-
 
 
 </div>

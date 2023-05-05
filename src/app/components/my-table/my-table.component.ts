@@ -24,20 +24,18 @@ export class MyTableComponent implements OnInit, OnChanges {
   itemPerPage!: number;
 
 
-
   ngOnInit(): void {
     this.key = this.tableConfig.order.defaultColumn;
     this.orderType = this.tableConfig.order.orderType;
     this.itemPerPage = this.tableConfig.pagination.itemPerPage;
-    this.totalPages = new Array(Math.ceil(this.data.length / this.tableConfig.pagination.itemPerPage));
-    this.pages = this.range(1, this.totalPages.length);
+    this.totalPages = new Array(Math.ceil(this.data.length / this.itemPerPage));
+    this.pages = this.range(this.currentPage, this.totalPages.length);
   }
-
 
 
   range(start: number, end: number): number[] {
     if (this.currentPage - 1 === 0) {
-      return [this.currentPage, this.currentPage  + 1]
+      return [this.currentPage, this.currentPage + 1]
     } else if (this.currentPage + 1 === this.totalPages.length + 1) {
       return [this.currentPage - 1, this.currentPage]
     } else {
@@ -63,6 +61,7 @@ export class MyTableComponent implements OnInit, OnChanges {
   /** Set page number */
   selectPageNumber(pageNumber: number) {
     this.currentPage = pageNumber;
+    this.pages = this.range(this.currentPage, this.totalPages.length);
   }
 
   /** Set next page number */
@@ -83,10 +82,21 @@ export class MyTableComponent implements OnInit, OnChanges {
       this.pages = this.range(previousPage, this.totalPages.length);
     }
   }
+
   changePage(page: number): void {
     this.currentPage = page;
   }
-  selectItemPerPage() {
+
+
+  selectItemPerPage(event: Event) {
+    let item = (event.target as HTMLSelectElement).value
+    if (item == "All") {
+      this.itemPerPage = this.data.length;
+    } else {
+      this.itemPerPage = Number(item);
+    }
+    this.totalPages = new Array(Math.ceil(this.data.length / this.itemPerPage));
+    this.pages = this.range(this.currentPage, this.totalPages.length);
 
   }
 }
