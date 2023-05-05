@@ -40,7 +40,7 @@
 
     </thead>
     <tbody>
-    <ng-container *ngFor="let object of data  | filterPipe: filter :filterKey | sortPipe : key:  orderType">
+    <ng-container *ngFor="let object of data | pagination :currentPage:itemPerPage | filterPipe: filter :filterKey | sortPipe : key:  orderType">
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
@@ -51,6 +51,55 @@
     </ng-container>
     </tbody>
   </table>
+
+
+  <!--Paginazione-->
+  <nav class="pages">
+    <ul class="pagination d-inline-flex">
+
+      <!-- first button -->
+      <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'" >
+        <button class="page-link" (click)="selectPageNumber(1)">Fist Page</button>
+      </li>
+
+      <!-- previous button -->
+      <li [ngClass]="{ disabled: currentPage === 1 }" class="page-item">
+        <a class="page-link" (click)="previous()">Previous</a>
+      </li>
+
+      <!-- range of pages list -->
+      <li class="page-item"
+        *ngFor="let page of pages"
+        [ngClass]="{ 'page-item': true, active: currentPage === page }"
+        (click)="changePage(page)">
+        <span class="page-link">{{ page }}</span>
+      </li>
+
+      <!-- next button -->
+      <li
+        [ngClass]="{ disabled: currentPage + 1 > totalPages.length }"
+        class="page-item"
+      >
+        <a class="page-link" (click)="next()">Next</a>
+      </li>
+
+      <!-- last button -->
+      <li [class]="currentPage === totalPages.length ? 'page-item disabled' : 'page-item'" >
+        <button class="page-link" (click)="selectPageNumber(totalPages.length)">Last Page</button>
+      </li>
+
+      <!--Select number of items-->&nbsp;&nbsp;&nbsp;
+      <li class="page-item">
+        <label for="currentPage">Item for page:</label>
+        <select id="currentPage" (change)="selectItemPerPage()">
+          <option *ngFor="let number of tableConfig.pagination.itemPerPageOptions">{{number}}</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+
+
+
 </div>
 
 

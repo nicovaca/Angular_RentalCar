@@ -34,7 +34,7 @@ export class AppComponent {
     ],
     order: {defaultColumn: "nome", orderType: "desc"},
     search: {columns: ["nome", "cognome", "email"]},
-    pagination: {itemPerPage:5, itemPerPageOptions:[5,10,15]}
+    pagination: {itemPerPage:4, itemPerPageOptions:[2,4,6]}
   }
 
   data: Utenti[] = utenti;

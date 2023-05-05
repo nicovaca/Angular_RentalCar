@@ -5,8 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PaginationPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(data: any[], selectedpage:number, itemperpage:number ): any {
+    let itemToStart = (selectedpage - 1) * itemperpage
+    let itemToEnd = itemToStart + itemperpage
+    return data.slice(itemToStart,itemToEnd)
   }
 
 }
