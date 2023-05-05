@@ -56,16 +56,16 @@
 
   <!--Paginazione-->
   <nav class="pages">
-    <ul class="pagination d-inline-flex">
+    <ul class="pagination d-inline-flex pagination-responsive">
 
       <!-- first button -->
       <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'">
-        <button class="page-link" (click)="selectPageNumber(1)">Fist Page</button>
+        <a class="page-link" (click)="selectPageNumber(1)"> << Fist Page</a>
       </li>
 
       <!-- previous button -->
       <li [ngClass]="{ disabled: currentPage === 1 }" class="page-item">
-        <a class="page-link" (click)="previous()">Previous</a>
+        <a class="page-link" (click)="previous()">< Previous</a>
       </li>
 
       <!-- range of pages list -->
@@ -81,18 +81,18 @@
         [ngClass]="{ disabled: currentPage + 1 > totalPages.length }"
         class="page-item"
       >
-        <a class="page-link" (click)="next()">Next</a>
+        <a class="page-link" (click)="next()">Next ></a>
       </li>
 
       <!-- last button -->
       <li [class]="currentPage === totalPages.length ? 'page-item disabled' : 'page-item'">
-        <button class="page-link" (click)="selectPageNumber(totalPages.length)">Last Page</button>
+        <a class="page-link" (click)="selectPageNumber(totalPages.length)">Last Page >></a>
       </li>
 
       <!--Select number of items-->&nbsp;&nbsp;&nbsp;
+      <p>Item for page:</p>&nbsp;
       <li class="page-item">
-        <label for="currentPage">Item for page:</label>
-        <select id="currentPage" (change)="selectItemPerPage($event)">
+        <select (change)="selectItemPerPage($event)" class="form-select" aria-label="select example">
           <option [selected]="number===itemPerPage" *ngFor="let number of tableConfig.pagination.itemPerPageOptions">{{number}}</option>
           <option>All</option>
         </select>
@@ -102,6 +102,8 @@
 
 
 </div>
+
+
 
 
 
