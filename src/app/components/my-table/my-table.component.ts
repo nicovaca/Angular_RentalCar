@@ -78,7 +78,6 @@ export class MyTableComponent implements OnInit, OnChanges {
     if (this.currentPage >= 1) {
       const previousPage = this.currentPage - 1;
       this.changePage(previousPage);
-      this.range(this.currentPage, this.totalPages.length);
       this.pages = this.range(previousPage, this.totalPages.length);
     }
   }
