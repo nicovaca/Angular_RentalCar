@@ -96,7 +96,9 @@ export class MyTableComponent implements OnInit, OnChanges {
       this.itemPerPage = Number(item);
     }
     this.totalPages = new Array(Math.ceil(this.data.length / this.itemPerPage));
+    if (this.currentPage>=this.totalPages.length) {
+      this.currentPage=this.totalPages.length;
+    }
     this.pages = this.range(this.currentPage, this.totalPages.length);
-
   }
 }

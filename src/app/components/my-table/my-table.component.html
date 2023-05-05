@@ -41,7 +41,7 @@
     </thead>
     <tbody>
     <ng-container
-      *ngFor="let object of data | pagination :currentPage:itemPerPage | filterPipe: filter :filterKey | sortPipe : key:  orderType">
+      *ngFor="let object of data | pagination :currentPage:itemPerPage | sortPipe : key:  orderType | filterPipe: filter :filterKey ">
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
