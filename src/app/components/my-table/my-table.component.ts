@@ -47,24 +47,11 @@ export class MyTableComponent implements OnInit, OnChanges {
     this.ngOnInit();
   }
 
-  sort(key: string) {
-    this.key = key;
-    if (this.orderType == "desc") {
-      this.orderType = "asc"
-    } else {
-      this.orderType = "desc"
-    }
-    this.enable = true;
-  }
-
-
-  /** Set page number */
-  selectPageNumber(pageNumber: number) {
-    this.currentPage = pageNumber;
+  changePage(page: number): void {
+    this.currentPage = page;
     this.pages = this.range(this.currentPage, this.totalPages.length);
   }
 
-  /** Set next page number */
   next() {
     if (this.currentPage <= this.totalPages.length) {
       const nextPage = this.currentPage + 1;
@@ -73,17 +60,13 @@ export class MyTableComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Set previous page number */
+
   previous() {
     if (this.currentPage >= 1) {
       const previousPage = this.currentPage - 1;
       this.changePage(previousPage);
       this.pages = this.range(previousPage, this.totalPages.length);
     }
-  }
-
-  changePage(page: number): void {
-    this.currentPage = page;
   }
 
 
@@ -95,9 +78,19 @@ export class MyTableComponent implements OnInit, OnChanges {
       this.itemPerPage = Number(item);
     }
     this.totalPages = new Array(Math.ceil(this.data.length / this.itemPerPage));
-    if (this.currentPage>=this.totalPages.length) {
-      this.currentPage=this.totalPages.length;
+    if (this.currentPage >= this.totalPages.length) {
+      this.currentPage = this.totalPages.length;
     }
     this.pages = this.range(this.currentPage, this.totalPages.length);
+  }
+
+  sort(key: string) {
+    this.key = key;
+    if (this.orderType == "desc") {
+      this.orderType = "asc"
+    } else {
+      this.orderType = "desc"
+    }
+    this.enable = true;
   }
 }

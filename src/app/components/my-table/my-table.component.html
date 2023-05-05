@@ -60,7 +60,7 @@
 
       <!-- first button -->
       <li [class]="currentPage === 1 ? 'page-item disabled' : 'page-item'">
-        <a class="page-link" (click)="selectPageNumber(1)"> << Fist Page</a>
+        <a class="page-link" (click)="changePage(1)"> << Fist Page</a>
       </li>
 
       <!-- previous button -->
@@ -86,7 +86,7 @@
 
       <!-- last button -->
       <li [class]="currentPage === totalPages.length ? 'page-item disabled' : 'page-item'">
-        <a class="page-link" (click)="selectPageNumber(totalPages.length)">Last Page >></a>
+        <a class="page-link" (click)="changePage(totalPages.length)">Last Page >></a>
       </li>
 
       <!--Select number of items-->&nbsp;&nbsp;&nbsp;
