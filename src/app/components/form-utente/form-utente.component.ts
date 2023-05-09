@@ -24,11 +24,11 @@ export class FormUtenteComponent implements OnInit {
   }
 
 
-  editForm = this.formBuilder.group({
-    nome: ['', Validators.required],
-    cognome: '',
-    email: '',
-    eta: 0
+  editForm = new FormGroup({
+    nome: new FormControl ('', Validators.required),
+    cognome:  new FormControl ('', Validators.required),
+    email:  new FormControl ('', [Validators.required, Validators.email]),
+    eta: new FormControl (0, [Validators.required, Validators.email]),
   });
 
 
@@ -55,7 +55,7 @@ export class FormUtenteComponent implements OnInit {
       console.log(this.editForm.value)
     } else {
       this.userService.updateUser(id, this.editForm.value.nome!, this.editForm.value.cognome!, this.editForm.value.email!, this.editForm.value.eta!)
-      this.router.navigate(['']);
+     this.router.navigate(['']);
       console.log(this.editForm.value)
     }
   }
