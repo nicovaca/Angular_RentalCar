@@ -1,4 +1,5 @@
-import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
+import { MyAction } from 'src/app/configs/configClass/my-action';
 import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
 
 
@@ -22,7 +23,9 @@ export class MyTableComponent implements OnInit, OnChanges {
   currentPage: number = 1;
   pages: number[] = [];
   itemPerPage!: number;
+  myAction :any
 
+  @Output() Action = new EventEmitter();
 
   ngOnInit(): void {
     this.key = this.tableConfig.order.defaultColumn;
@@ -30,6 +33,7 @@ export class MyTableComponent implements OnInit, OnChanges {
     this.itemPerPage = this.tableConfig.pagination.itemPerPage;
     this.totalPages = new Array(Math.ceil(this.data.length / this.itemPerPage));
     this.pages = this.range(this.currentPage, this.totalPages.length);
+    this.myAction = this.tableConfig.actions
   }
 
 
@@ -93,4 +97,9 @@ export class MyTableComponent implements OnInit, OnChanges {
     }
     this.enable = true;
   }
+
+  actionEmitter(action : MyAction, id:number){
+    this.Action.emit({action, id});
+  }
+
 }

@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="container">
   <!--Filtro-->
@@ -22,6 +23,15 @@
     </mat-form-field>
   </div>
 
+  <!--Bottone Aggiungi-->
+  <div >
+    <ng-container *ngFor="let action of tableConfig.actions">
+      <app-my-button *ngIf="action.newRowButton===true" (click)="actionEmitter(action,0)"
+                     [buttonConfig]="action.buttonConfig"></app-my-button> &nbsp;&nbsp;
+
+    </ng-container>
+    <br>
+  </div>
 
   <!--Tabella-->
   <table class="table table-bordered">
@@ -41,11 +51,19 @@
     </thead>
     <tbody>
     <ng-container
-      *ngFor="let object of data | pagination :currentPage:itemPerPage | sortPipe : key:  orderType | filterPipe: filter :filterKey ">
+      *ngFor="let object of data  | sortPipe : key:  orderType | filterPipe: filter :filterKey | pagination :currentPage:itemPerPage">
       <tr>
 
         <td *ngFor="let header of tableConfig.headers">{{object[header.key]}}</td>
 
+        <!--Bottoni-->
+        <td style="width: 300px">
+          <ng-container *ngFor="let action of tableConfig.actions">
+            <app-my-button *ngIf="action.newRowButton===false" (click)="actionEmitter(action, object.id)"
+                           [buttonConfig]="action.buttonConfig"></app-my-button> &nbsp;&nbsp;
+
+          </ng-container>
+        </td>
 
       </tr>
 
@@ -93,7 +111,8 @@
       <p>Item for page:</p>&nbsp;
       <li class="page-item">
         <select (change)="selectItemPerPage($event)" class="form-select" aria-label="select example">
-          <option [selected]="number===itemPerPage" *ngFor="let number of tableConfig.pagination.itemPerPageOptions">{{number}}</option>
+          <option [selected]="number===itemPerPage"
+                  *ngFor="let number of tableConfig.pagination.itemPerPageOptions">{{number}}</option>
           <option>All</option>
         </select>
       </li>
@@ -102,8 +121,6 @@
 
 
 </div>
-
-
 
 
 

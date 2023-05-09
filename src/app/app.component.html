@@ -12,8 +12,15 @@
 <app-my-button
   [buttonConfig]="bottoneElimina"></app-my-button>
 
+<br>
+<router-outlet></router-outlet>
+
 <br><br>
 <app-my-table
   [tableConfig]="headersTable"
-  [data]="data">
+  [data]="data"
+  (Action)="getAction($event.action, $event.id)"
+>
 </app-my-table>
+
+

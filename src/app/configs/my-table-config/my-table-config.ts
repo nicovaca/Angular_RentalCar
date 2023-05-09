@@ -1,3 +1,4 @@
+import { MyAction } from "../configClass/my-action";
 import { MyHeaders } from "../configClass/my-headers";
 import { MyOrder } from "../configClass/my-order";
 import { MyPagination } from "../configClass/my-pagination";
@@ -11,4 +12,5 @@ export class MyTableConfig {
   order! : MyOrder ;
   search! : MySearch ;
   pagination! : MyPagination ;
+  actions! : MyAction [];
 }

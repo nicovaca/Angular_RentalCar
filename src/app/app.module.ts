@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from "@angular/forms";
+import {FormsModule,ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 
@@ -23,6 +23,9 @@ import { FilterPipePipe } from './components/my-table/pipe/filter-pipe.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SortPipePipe } from './components/my-table/pipe/sort-pipe.pipe';
 import { PaginationPipe } from './components/my-table/pipe/pagination.pipe';
+import { RouterModule } from '@angular/router';
+import { FormUtenteComponent } from './components/form-utente/form-utente.component';
+
 
 
 
@@ -37,7 +40,8 @@ import { PaginationPipe } from './components/my-table/pipe/pagination.pipe';
     MyTableComponent,
     FilterPipePipe,
     SortPipePipe,
-    PaginationPipe
+    PaginationPipe,
+    FormUtenteComponent
 
   ],
   imports: [
@@ -46,11 +50,16 @@ import { PaginationPipe } from './components/my-table/pipe/pagination.pipe';
     MatToolbarModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
     MatIconModule,
     NgbModule,
+    RouterModule.forRoot([
+      { path: 'utenti/:id', component: FormUtenteComponent},
+
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
