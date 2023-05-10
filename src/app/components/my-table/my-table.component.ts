@@ -25,7 +25,7 @@ export class MyTableComponent implements OnInit, OnChanges {
   itemPerPage!: number;
   myAction :any
 
-  @Output() action = new EventEmitter();
+  @Output() Action = new EventEmitter();
 
   ngOnInit(): void {
     this.key = this.tableConfig.order.defaultColumn;
@@ -98,9 +98,9 @@ export class MyTableComponent implements OnInit, OnChanges {
     this.enable = true;
   }
 
-  actionEmitter(action : MyAction, id:number){
+  actionEmitter(action : MyAction, object:any){
 
-    this.action.emit({action, id});
+    this.Action.emit({action, object});
   }
 
 }

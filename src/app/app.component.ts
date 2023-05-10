@@ -77,9 +77,15 @@ export class AppComponent {
   }
 
 
-  getAction(action: MyAction, id: number) {
+  getAction(action: MyAction, object:any) {
+
+    let id:number = object? object.id : 0
+
+
+    console.log(id)
     switch (action.type) {
       case MyTableActionEnum.DELETE:
+
         this.data = this.data.filter(utente => utente.id !== id);
         this.userService.deleteUser(id)
         break;
@@ -89,7 +95,8 @@ export class AppComponent {
         break;
 
       case MyTableActionEnum.NEW_ROW:
-        this.router.navigate(['utenti/', id])
+        let idNew=0
+        this.router.navigate(['utenti/', idNew])
         break;
     }
 

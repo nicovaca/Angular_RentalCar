@@ -26,7 +26,7 @@
   <!--Bottone Aggiungi-->
   <div >
     <ng-container *ngFor="let action of tableConfig.actions">
-      <app-my-button *ngIf="action.newRowButton===true" (click)="actionEmitter(action,0)"
+      <app-my-button *ngIf="action.newRowButton===true" (click)="actionEmitter(action,null)"
                      [buttonConfig]="action.buttonConfig"></app-my-button> &nbsp;&nbsp;
 
     </ng-container>
@@ -59,7 +59,7 @@
         <!--Bottoni-->
         <td style="width: 300px">
           <ng-container *ngFor="let action of tableConfig.actions">
-            <app-my-button *ngIf="action.newRowButton===false" (click)="actionEmitter(action, object.id)"
+            <app-my-button *ngIf="action.newRowButton===false" (click)="actionEmitter(action, object)"
                            [buttonConfig]="action.buttonConfig"></app-my-button> &nbsp;&nbsp;
 
           </ng-container>
