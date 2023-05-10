@@ -2,7 +2,7 @@ import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Utenti} from 'src/app/models/utenti';
 import {utenti} from '../../environments/utenti';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from 'src/app/services/user.service';
 
@@ -19,16 +19,15 @@ export class FormUtenteComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private userService: UserService,
-              private formBuilder: FormBuilder,
               private router: Router) {
   }
 
 
   editForm = new FormGroup({
-    nome: new FormControl ('', Validators.required),
-    cognome:  new FormControl ('', Validators.required),
-    email:  new FormControl ('', [Validators.required, Validators.email]),
-    eta: new FormControl (0, [Validators.required, Validators.email]),
+    nome: new FormControl('', Validators.required),
+    cognome: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    eta: new FormControl(0, Validators.required),
   });
 
 
@@ -55,7 +54,7 @@ export class FormUtenteComponent implements OnInit {
       console.log(this.editForm.value)
     } else {
       this.userService.updateUser(id, this.editForm.value.nome!, this.editForm.value.cognome!, this.editForm.value.email!, this.editForm.value.eta!)
-     this.router.navigate(['']);
+      this.router.navigate(['']);
       console.log(this.editForm.value)
     }
   }
