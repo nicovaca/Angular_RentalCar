@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Utenti} from 'src/app/models/utenti';
 
-import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Veicolo} from 'src/app/models/veicolo';
 import {VeicoliService} from 'src/app/services/veicoli.service';
@@ -63,14 +63,12 @@ export class FormVeicoloComponent {
 
 
   saveOrUpdateUtente() {
-
     if (this.veicoloIdFromRoute != 0) {
-      this.veicoloService.addVeicolo(this.veicolo).subscribe(hero => this.veicoli.push(hero))
+      this.veicoloService.addVeicolo(this.veicolo).subscribe(veicolo => this.veicoli.push(veicolo))
       this.router.navigate(['veicoli']);
       console.log(this.veicolo)
 
     } else {
-      //this.veicoloService.updateVeicolo(id, this.editForm.value.nome!, this.editForm.value.cognome!, this.editForm.value.email!, this.editForm.value.eta!)
       this.veicoloService.updateVeicolo(this.veicolo).subscribe()
       this.router.navigate(['veicoli']);
 
@@ -80,4 +78,10 @@ export class FormVeicoloComponent {
 
   protected readonly Object = Object;
   protected readonly TipoVeicolo = TipoVeicolo;
+
+
+
+
+
 }
+

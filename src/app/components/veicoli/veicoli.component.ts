@@ -48,6 +48,7 @@ export class VeicoliComponent implements OnInit {
       {key: "modello", label: "Modello"},
       {key: "annoImmatricolazione", label: "Anno di Immatricolazione"},
       {key: "targa", label: "Targa"},
+      {key: "tipoVeicolo", label: "Tipo di Veicolo"},
     ],
     order: {defaultColumn: "id", orderType: "desc"},
     search: {columns: ["modello", "casaCostruttrice"]},
