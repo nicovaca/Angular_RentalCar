@@ -1,0 +1,12 @@
+
+<router-outlet></router-outlet>
+
+<br><br>
+<app-my-table
+  [tableConfig]="headersTable"
+  [data]="data"
+  (emitter)="getAction($event.action, $event.object)"
+>
+</app-my-table>
+
+

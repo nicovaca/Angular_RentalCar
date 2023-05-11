@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
-import { MyAction } from 'src/app/configs/configClass/my-action';
-import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
+import { MyAction } from '../../../configs/configClass/my-action';
+import {MyTableConfig} from '../../../configs/my-table-config/my-table-config';
 
 
 @Component({

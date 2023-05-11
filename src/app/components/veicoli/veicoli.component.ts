@@ -1,23 +1,21 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
-import {MyAction} from './configs/configClass/my-action';
-import {MyTableActionEnum} from './configs/configClass/my-table-action-enum';
-import {MyButtonConfig} from './configs/my-button-config/my-button-config';
-import {MyTableConfig} from './configs/my-table-config/my-table-config';
-import {utenti} from './environments/utenti';
-import {Utenti} from './models/utenti';
-import {UserService} from './services/user.service';
-import {FormBuilder} from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MyAction } from 'src/app/configs/configClass/my-action';
+import { MyTableActionEnum } from 'src/app/configs/configClass/my-table-action-enum';
+import { MyButtonConfig } from 'src/app/configs/my-button-config/my-button-config';
+import { MyTableConfig } from 'src/app/configs/my-table-config/my-table-config';
+import { utenti } from 'src/app/environments/utenti';
+import { Utenti } from 'src/app/models/utenti';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-veicoli',
+  templateUrl: './veicoli.component.html',
+  styleUrls: ['./veicoli.component.css']
 })
-export class AppComponent {
-  title = 'Demo';
-/*  data: Utenti[] = utenti;
+export class VeicoliComponent {
+
+  data: Utenti[] = utenti;
 
 
   constructor(
@@ -100,7 +98,5 @@ export class AppComponent {
         break;
     }
 
-  }*/
-
-
+  }
 }

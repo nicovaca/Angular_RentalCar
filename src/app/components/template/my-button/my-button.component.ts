@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { MyButtonConfig } from 'src/app/configs/my-button-config/my-button-config';
+import { MyButtonConfig } from '../../../configs/my-button-config/my-button-config';
 
 
 

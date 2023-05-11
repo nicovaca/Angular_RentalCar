@@ -9,8 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular Material
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-import { MyButtonComponent } from './components/my-button/my-button.component';
-import { MyTableComponent } from './components/my-table/my-table.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -19,12 +17,18 @@ import {MatIconModule} from '@angular/material/icon';
 
 
 //Pipe
-import { FilterPipePipe } from './components/my-table/pipe/filter-pipe.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SortPipePipe } from './components/my-table/pipe/sort-pipe.pipe';
-import { PaginationPipe } from './components/my-table/pipe/pagination.pipe';
 import { RouterModule } from '@angular/router';
 import { FormUtenteComponent } from './components/form-utente/form-utente.component';
+import { NavBarComponent } from './components/template/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/template/footer/footer.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { VeicoliComponent } from './components/veicoli/veicoli.component';
+import { MyButtonComponent } from './components/template/my-button/my-button.component';
+import { MyTableComponent } from './components/template/my-table/my-table.component';
+import { FilterPipePipe } from './components/template/my-table/pipe/filter-pipe.pipe';
+import { PaginationPipe } from './components/template/my-table/pipe/pagination.pipe';
+import { SortPipePipe } from './components/template/my-table/pipe/sort-pipe.pipe';
 
 
 
@@ -41,7 +45,11 @@ import { FormUtenteComponent } from './components/form-utente/form-utente.compon
     FilterPipePipe,
     SortPipePipe,
     PaginationPipe,
-    FormUtenteComponent
+    FormUtenteComponent,
+    NavBarComponent,
+    FooterComponent,
+    HomepageComponent,
+    VeicoliComponent
 
   ],
   imports: [
@@ -57,7 +65,9 @@ import { FormUtenteComponent } from './components/form-utente/form-utente.compon
     MatIconModule,
     NgbModule,
     RouterModule.forRoot([
+      { path: '', component: HomepageComponent},
       { path: 'utenti/:id', component: FormUtenteComponent},
+      { path: 'veicoli', component: VeicoliComponent},
 
     ])
   ],
