@@ -19,7 +19,7 @@
 <app-my-table
   [tableConfig]="headersTable"
   [data]="data"
-  (Action)="getAction($event.action, $event.object)"
+  (emitter)="getAction($event.action, $event.object)"
 >
 </app-my-table>
 
