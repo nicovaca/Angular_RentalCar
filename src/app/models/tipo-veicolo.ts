@@ -1,6 +1,6 @@
 export enum TipoVeicolo {
-  AUTO,
-  MINIVAN,
-  FURGONE,
-  SUV
+  AUTO='Auto',
+  MINIVAN ='Minivan',
+  FURGONE ='Furgone',
+  SUV='Suv'
 }

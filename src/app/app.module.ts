@@ -19,7 +19,6 @@ import {MatIconModule} from '@angular/material/icon';
 //Pipe
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { FormUtenteComponent } from './components/form-utente/form-utente.component';
 import { NavBarComponent } from './components/template/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -32,6 +31,8 @@ import { SortPipePipe } from './components/template/my-table/pipe/sort-pipe.pipe
 import { InMemoryDataServiceService } from './services/in-memory-data-service.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
+import { FormVeicoloComponent } from './components/forms/form-veicolo/form-veicolo.component';
+import { FormUtenteComponent } from './components/forms/form-utente/form-utente.component';
 
 
 
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     FooterComponent,
     HomepageComponent,
-    VeicoliComponent
+    VeicoliComponent,
+    FormVeicoloComponent
 
   ],
   imports: [
@@ -73,6 +75,7 @@ import { HttpClientModule } from '@angular/common/http';
       { path: '', component: HomepageComponent},
       { path: 'utenti/:id', component: FormUtenteComponent},
       { path: 'veicoli', component: VeicoliComponent},
+      { path: 'veicoli/:id', component: FormVeicoloComponent},
 
     ])
   ],

@@ -1,10 +1,10 @@
 import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Utenti} from 'src/app/models/utenti';
-import {utenti} from '../../environments/utenti';
+import {Utenti} from '../../../models/utenti';
+import {utenti} from '../../../environments/utenti';
 import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserService} from 'src/app/services/user.service';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-form-utente',

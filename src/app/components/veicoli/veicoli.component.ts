@@ -1,23 +1,23 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Router } from '@angular/router';
-import { MyAction } from 'src/app/configs/configClass/my-action';
-import { MyTableActionEnum } from 'src/app/configs/configClass/my-table-action-enum';
-import { MyButtonConfig } from 'src/app/configs/my-button-config/my-button-config';
-import { MyTableConfig } from 'src/app/configs/my-table-config/my-table-config';
-import { utenti } from 'src/app/environments/utenti';
-import { Utenti } from 'src/app/models/utenti';
-import { Veicolo } from 'src/app/models/veicolo';
-import { UserService } from 'src/app/services/user.service';
-import { VeicoliService } from 'src/app/services/veicoli.service';
+import { Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Router} from '@angular/router';
+import {MyAction} from 'src/app/configs/configClass/my-action';
+import {MyTableActionEnum} from 'src/app/configs/configClass/my-table-action-enum';
+import {MyButtonConfig} from 'src/app/configs/my-button-config/my-button-config';
+import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
+import {utenti} from 'src/app/environments/utenti';
+import {Utenti} from 'src/app/models/utenti';
+import {Veicolo} from 'src/app/models/veicolo';
+import {UserService} from 'src/app/services/user.service';
+import {VeicoliService} from 'src/app/services/veicoli.service';
 
 @Component({
   selector: 'app-veicoli',
   templateUrl: './veicoli.component.html',
   styleUrls: ['./veicoli.component.css']
 })
-export class VeicoliComponent implements OnInit{
+export class VeicoliComponent implements OnInit {
 
-  veicoli:Veicolo[] = [];
+  veicoli: Veicolo[] = [];
   data: Utenti[] = utenti;
 
 
@@ -28,9 +28,12 @@ export class VeicoliComponent implements OnInit{
   ) {
   }
 
+
+
   ngOnInit(): void {
         this.getVeicoli();
     }
+
 
   getVeicoli() {
         this.veicoliService.getVeicoli()
@@ -44,7 +47,6 @@ export class VeicoliComponent implements OnInit{
       {key: "casaCostruttrice", label: "Casa Costruttrice"},
       {key: "modello", label: "Modello"},
       {key: "annoImmatricolazione", label: "Anno di Immatricolazione"},
-      {key: "tipoVeicolo", label: "Tipo di Veicolo"},
       {key: "targa", label: "Targa"},
     ],
     order: {defaultColumn: "id", orderType: "desc"},
@@ -86,8 +88,8 @@ export class VeicoliComponent implements OnInit{
     switch (action.type) {
       case MyTableActionEnum.DELETE:
 
-        this.data = this.data.filter(utente => utente.id !== id);
-        this.userService.deleteUser(id)
+        this.veicoli = this.veicoli.filter(v => v.id !== id);
+        this.veicoliService.deleteVeicolo(id).subscribe();
         break;
 
       case MyTableActionEnum.EDIT:
