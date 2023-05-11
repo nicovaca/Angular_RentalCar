@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { MyAction } from 'src/app/configs/configClass/my-action';
 import { MyTableActionEnum } from 'src/app/configs/configClass/my-table-action-enum';
@@ -6,47 +6,49 @@ import { MyButtonConfig } from 'src/app/configs/my-button-config/my-button-confi
 import { MyTableConfig } from 'src/app/configs/my-table-config/my-table-config';
 import { utenti } from 'src/app/environments/utenti';
 import { Utenti } from 'src/app/models/utenti';
+import { Veicolo } from 'src/app/models/veicolo';
 import { UserService } from 'src/app/services/user.service';
+import { VeicoliService } from 'src/app/services/veicoli.service';
 
 @Component({
   selector: 'app-veicoli',
   templateUrl: './veicoli.component.html',
   styleUrls: ['./veicoli.component.css']
 })
-export class VeicoliComponent {
+export class VeicoliComponent implements OnInit{
 
+  veicoli:Veicolo[] = [];
   data: Utenti[] = utenti;
 
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private veicoliService: VeicoliService,
   ) {
   }
 
+  ngOnInit(): void {
+        this.getVeicoli();
+    }
 
+  getVeicoli() {
+        this.veicoliService.getVeicoli()
+          .subscribe(veicoli => (this.veicoli=veicoli));
+    }
 
-  bottoneHome: MyButtonConfig = {
-    customCssClass: 'btn btn-primary',
-    icon: 'fa fa-home',
-    text: 'Home'
-  }
-
-  bottoneElimina: MyButtonConfig = {
-    customCssClass: 'btn btn-danger',
-    icon: 'fa fa-trash',
-    text: 'Elimina'
-  }
 
   headersTable: MyTableConfig = {
     headers: [
-      {key: "nome", label: "Nome"},
-      {key: "cognome", label: "Cognome"},
-      {key: "email", label: "Email"},
-      {key: "eta", label: "Età"}
+      {key: "id", label: "Id"},
+      {key: "casaCostruttrice", label: "Casa Costruttrice"},
+      {key: "modello", label: "Modello"},
+      {key: "annoImmatricolazione", label: "Anno di Immatricolazione"},
+      {key: "tipoVeicolo", label: "Tipo di Veicolo"},
+      {key: "targa", label: "Targa"},
     ],
-    order: {defaultColumn: "nome", orderType: "desc"},
-    search: {columns: ["nome", "cognome", "email"]},
+    order: {defaultColumn: "id", orderType: "desc"},
+    search: {columns: ["modello", "casaCostruttrice"]},
     pagination: {itemPerPage: 5, itemPerPageOptions: [5, 10, 15]},
     actions: [
       {
@@ -89,12 +91,12 @@ export class VeicoliComponent {
         break;
 
       case MyTableActionEnum.EDIT:
-        this.router.navigate(['utenti/', id])
+        this.router.navigate(['veicoli/', id])
         break;
 
       case MyTableActionEnum.NEW_ROW:
         let idNew=0
-        this.router.navigate(['utenti/', idNew])
+        this.router.navigate(['veicoli/', idNew])
         break;
     }
 

@@ -29,6 +29,9 @@ import { MyTableComponent } from './components/template/my-table/my-table.compon
 import { FilterPipePipe } from './components/template/my-table/pipe/filter-pipe.pipe';
 import { PaginationPipe } from './components/template/my-table/pipe/pagination.pipe';
 import { SortPipePipe } from './components/template/my-table/pipe/sort-pipe.pipe';
+import { InMemoryDataServiceService } from './services/in-memory-data-service.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -63,7 +66,9 @@ import { SortPipePipe } from './components/template/my-table/pipe/sort-pipe.pipe
     MatSelectModule,
     MatInputModule,
     MatIconModule,
+    HttpClientModule,
     NgbModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataServiceService),
     RouterModule.forRoot([
       { path: '', component: HomepageComponent},
       { path: 'utenti/:id', component: FormUtenteComponent},
