@@ -25,11 +25,11 @@ export class UtentiComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getutenti();
+    this.getUtenti();
   }
 
 
-  getutenti() {
+  getUtenti() {
     this.utenteService.getutenti()
       .subscribe(utenti => (this.utenti = utenti));
   }

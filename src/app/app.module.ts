@@ -36,6 +36,9 @@ import { FormUtenteComponent } from './components/forms/form-utente/form-utente.
 import { UtentiComponent } from './components/utenti/utenti.component';
 import { PrenotazioniComponent } from './components/prenotazioni/prenotazioni.component';
 import { FormPrenotazioneComponent } from './components/forms/form-prenotazione/form-prenotazione.component';
+import { FormLoginComponent } from './components/forms/form-login/form-login.component';
+import { PageNotFoundComponent } from './components/template/page-not-found/page-not-found.component';
+import { ProfiloCustomerComponent } from './components/profilo-customer/profilo-customer.component';
 
 
 
@@ -60,7 +63,10 @@ import { FormPrenotazioneComponent } from './components/forms/form-prenotazione/
     FormVeicoloComponent,
     UtentiComponent,
     PrenotazioniComponent,
-    FormPrenotazioneComponent
+    FormPrenotazioneComponent,
+    FormLoginComponent,
+    PageNotFoundComponent,
+    ProfiloCustomerComponent
 
   ],
   imports: [
@@ -85,7 +91,10 @@ import { FormPrenotazioneComponent } from './components/forms/form-prenotazione/
       { path: 'utenti/:id', component: FormUtenteComponent},
       { path: 'prenotazioni', component: PrenotazioniComponent},
       { path: 'prenotazioni/:id', component: FormPrenotazioneComponent},
+      { path: 'login', component: FormLoginComponent},
+      { path: 'prenotazioni/prenotazioniCustomer/:id', component: ProfiloCustomerComponent },
 
+      { path: '**', component: PageNotFoundComponent },
     ])
   ],
   providers: [],

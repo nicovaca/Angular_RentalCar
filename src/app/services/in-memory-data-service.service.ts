@@ -72,19 +72,6 @@ export class InMemoryDataServiceService implements InMemoryDbService {
       },
     ];
 
-    const prenotazioni = [
-      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString(), approvazione: true, utente: 1, veicolo: 6},
-      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString(), approvazione: true, utente: 2, veicolo: 3},
-      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString(), approvazione: false, utente: 3, veicolo: 5}
-    ];
-
-    const periodoPrenotazione = [
-      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString()},
-      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString()},
-      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString()},
-
-    ];
-
     const utenti = [
       {
         id: 1,
@@ -95,7 +82,7 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         username: 'marRoss',
         password: 'marRoss',
         ruolo: Ruolo.CUSTOMER,
-        prenotazioni: [prenotazioni[0].id, prenotazioni[2].id]
+        prenotazioni: 1
       },
       {
         id: 2,
@@ -106,7 +93,7 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         username: 'annb',
         password: 'annb',
         ruolo: Ruolo.CUSTOMER,
-        prenotazioni: undefined
+        prenotazioni: 3
       },
       {
         id: 3,
@@ -117,7 +104,7 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         username: 'giuv',
         password: 'giuv',
         ruolo: Ruolo.CUSTOMER,
-        prenotazioni: prenotazioni[1].id
+        prenotazioni: 2
       },
       /*{
         id: -1,
@@ -143,6 +130,18 @@ export class InMemoryDataServiceService implements InMemoryDbService {
       },
     ];
 
+    const prenotazioni = [
+      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString(), approvazione: true, utente: 1, veicolo: 6},
+      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString(), approvazione: true, utente: 3, veicolo: 3},
+      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString(), approvazione: false, utente: 3, veicolo: 5}
+    ];
+
+    const periodoPrenotazione = [
+      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString()},
+      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString()},
+      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString()},
+
+    ];
     return {veicoli, prenotazioni, utenti, periodoPrenotazione};
   }
 

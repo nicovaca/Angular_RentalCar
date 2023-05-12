@@ -1,6 +1,6 @@
 import {HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {catchError, Observable, throwError } from 'rxjs';
+import {catchError, map, Observable, throwError } from 'rxjs';
 import { Prenotazione } from '../models/prenotazione';
 
 @Injectable({
@@ -14,6 +14,9 @@ export class PrenotazioniService {
     })
   };
   prenotazioniUrl = 'api/prenotazioni';  // URL to web api
+
+
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -58,6 +61,7 @@ export class PrenotazioniService {
   addPrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {
     return this.http.post<Prenotazione>(this.prenotazioniUrl, prenotazione, this.httpOptions)
       .pipe(
+        map((result: { utente: { id: any; }; }) => result.utente.id),
         catchError(this.handleError)
       );
   }
@@ -79,6 +83,14 @@ export class PrenotazioniService {
       .pipe(
         catchError(this.handleError)
 
+      );
+  }
+
+  getPrenotazioniByIdUtente(id:number): Observable<Prenotazione[]>{
+    const url = `${this.prenotazioniUrl}/prenotazioniCustomer/${id}`;
+    return this.http.get<Prenotazione[]>(url)
+      .pipe(
+        catchError(this.handleError)
       );
   }
 }
