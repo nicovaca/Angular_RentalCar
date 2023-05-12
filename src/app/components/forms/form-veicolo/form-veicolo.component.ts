@@ -18,7 +18,7 @@ export class FormVeicoloComponent {
   veicoli: Veicolo[] = [];
   veicoloIdFromRoute: any
   id!: number
-  stateTypes = Object.values(TipoVeicolo);
+  veicoloTypes = Object.values(TipoVeicolo);
 
 
   constructor(private route: ActivatedRoute,
@@ -61,7 +61,7 @@ export class FormVeicoloComponent {
 
 
   saveOrUpdateVeicolo() {
-    if (this.veicoloIdFromRoute != 0) {
+    if (this.veicoloIdFromRoute === 0) {
       this.veicoloService.addVeicolo(this.veicolo).subscribe(veicolo => this.veicoli.push(veicolo))
       this.router.navigate(['veicoli']);
       console.log(this.veicolo)

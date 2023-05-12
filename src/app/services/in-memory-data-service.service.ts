@@ -73,9 +73,9 @@ export class InMemoryDataServiceService implements InMemoryDbService {
     ];
 
     const prenotazioni = [
-      {id: 1, periodoPrenotazione: 1, approvazione: true, utente: 1, veicolo: 6},
-      {id: 2, periodoPrenotazione: 2, approvazione: true, utente: 2, veicolo: 3},
-      {id: 3, periodoPrenotazione: 3, approvazione: false, utente: 3, veicolo: 5}
+      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString(), approvazione: true, utente: 1, veicolo: 6},
+      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString(), approvazione: true, utente: 2, veicolo: 3},
+      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString(), approvazione: false, utente: 3, veicolo: 5}
     ];
 
     const periodoPrenotazione = [

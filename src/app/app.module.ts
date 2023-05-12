@@ -34,6 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormVeicoloComponent } from './components/forms/form-veicolo/form-veicolo.component';
 import { FormUtenteComponent } from './components/forms/form-utente/form-utente.component';
 import { UtentiComponent } from './components/utenti/utenti.component';
+import { PrenotazioniComponent } from './components/prenotazioni/prenotazioni.component';
+import { FormPrenotazioneComponent } from './components/forms/form-prenotazione/form-prenotazione.component';
 
 
 
@@ -56,7 +58,9 @@ import { UtentiComponent } from './components/utenti/utenti.component';
     HomepageComponent,
     VeicoliComponent,
     FormVeicoloComponent,
-    UtentiComponent
+    UtentiComponent,
+    PrenotazioniComponent,
+    FormPrenotazioneComponent
 
   ],
   imports: [
@@ -79,6 +83,8 @@ import { UtentiComponent } from './components/utenti/utenti.component';
       { path: 'veicoli/:id', component: FormVeicoloComponent},
       { path: 'utenti', component: UtentiComponent},
       { path: 'utenti/:id', component: FormUtenteComponent},
+      { path: 'prenotazioni', component: PrenotazioniComponent},
+      { path: 'prenotazioni/:id', component: FormPrenotazioneComponent},
 
     ])
   ],

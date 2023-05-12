@@ -55,7 +55,7 @@ export class FormUtenteComponent implements OnInit {
     }
 
   saveOrUpdateUtente(){
-  if (this.utenteIdFromRoute != 0) {
+  if (this.utenteIdFromRoute === 0) {
   this.utenteService.addUtente(this.utente).subscribe(utente => this.utenti.push(utente))
   this.router.navigate(['utenti']);
   console.log(this.utente)

@@ -1,29 +1,27 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { MyAction } from 'src/app/configs/configClass/my-action';
-import { MyTableActionEnum } from 'src/app/configs/configClass/my-table-action-enum';
-import { MyTableConfig } from 'src/app/configs/my-table-config/my-table-config';
-import { Utente } from 'src/app/models/utente';
-import { UtentiService } from 'src/app/services/utenti.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MyAction} from 'src/app/configs/configClass/my-action';
+import {MyTableActionEnum} from 'src/app/configs/configClass/my-table-action-enum';
+import {MyButtonConfig} from 'src/app/configs/my-button-config/my-button-config';
+import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
+import {Utente} from 'src/app/models/utente';
+import {UtentiService} from 'src/app/services/utenti.service';
 
 @Component({
   selector: 'app-utenti',
   templateUrl: './utenti.component.html',
   styleUrls: ['./utenti.component.css']
 })
-export class UtentiComponent {
+export class UtentiComponent implements OnInit {
 
   utenti: Utente[] = [];
 
 
-
   constructor(
-    private utenteService:UtentiService,
+    private utenteService: UtentiService,
     private router: Router,
-
   ) {
   }
-
 
 
   ngOnInit(): void {
@@ -33,7 +31,7 @@ export class UtentiComponent {
 
   getutenti() {
     this.utenteService.getutenti()
-      .subscribe(utenti => (this.utenti=utenti));
+      .subscribe(utenti => (this.utenti = utenti));
   }
 
 
@@ -48,7 +46,7 @@ export class UtentiComponent {
 
     ],
     order: {defaultColumn: "id", orderType: "desc"},
-    search: {columns: ["nome", "cognome","email","username"]},
+    search: {columns: ["nome", "cognome", "email", "username"]},
     pagination: {itemPerPage: 5, itemPerPageOptions: [5, 10, 15]},
     actions: [
       {
@@ -72,14 +70,18 @@ export class UtentiComponent {
           text: 'Aggiungi Utente'
         }, newRowButton: true
       }
-
     ]
   }
 
+  buttonListPrenotazione: MyButtonConfig = {
+    customCssClass: 'btn btn-success',
+    text: 'Lista Prenotazioni',
+    icon: ''
+  }
 
-  getAction(action: MyAction, object:any) {
+  getAction(action: MyAction, object: any) {
 
-    let id:number = object? object.id : 0
+    let id: number = object ? object.id : 0
 
 
     console.log(id)
@@ -95,7 +97,7 @@ export class UtentiComponent {
         break;
 
       case MyTableActionEnum.NEW_ROW:
-        let idNew=0
+        let idNew = 0
         this.router.navigate(['utenti/', idNew])
         break;
     }

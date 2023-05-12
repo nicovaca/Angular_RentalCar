@@ -1,0 +1,61 @@
+<br xmlns="http://www.w3.org/1999/html"><br>
+<div class="container">
+  <h2 *ngIf="prenotazioneIdFromRoute!=0">Modifica Prenotazione per l'utente Id: {{prenotazione.utente}}</h2>
+  <h2 *ngIf="prenotazioneIdFromRoute===0">Crea Prenotazione</h2>
+
+  <div class="form-inline">
+    <div>
+      <form #form="ngForm" (ngSubmit)="saveOrUpdatePrenotazione()">
+
+        <div *ngIf="prenotazione.utente">
+          <input type="hidden" name="utente">
+        </div>
+
+        <div class="input-group form-group">
+          <label for="dataInizio">Data di Inizio Prenotazione:</label>
+          <input type="date" id="dataInizio" class="form-control" name="dataInizio" [(ngModel)]="prenotazione.dataInizio" ngModel required>
+        </div>
+
+        <div class="input-group form-group">
+          <label for="dataFine">Data di Fine Prenotazione:</label>
+          <input type="date" id="dataFine" class="form-control" name="dataFine" [(ngModel)]="prenotazione.dataFine" ngModel required>
+        </div>
+
+        <div class="input-group form-group">
+          <label for="veicolo">Veicolo</label>
+          <select class="form-control" name="veicolo" id="veicolo"
+                  ngModel required
+                  [(ngModel)]="prenotazione.veicolo" name="veicolo">
+            <option *ngFor="let tipo of veicoli" [value]="tipo.id" [label]="tipo.casaCostruttrice + tipo.modello"></option>
+          </select>
+        </div>
+
+        <div class="input-group form-group" *ngIf="prenotazioneIdFromRoute!=0">
+          <label for="approva">Approvazione</label>
+          <select class="form-control" name="approvazione" id="approva"
+                  ngModel required
+                  [(ngModel)]="prenotazione.approvazione" name="approvazione">
+            <option [value]="true">Approvata</option>
+            <option [value]="false" >Non approvata</option>
+          </select>
+        </div>
+
+        <div class="input-group form-group">
+          <div *ngIf="prenotazioneIdFromRoute!=0">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Modifica</button>
+          </div>
+          <div *ngIf="prenotazioneIdFromRoute===0">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Crea</button>
+          </div>
+
+          <button type="button" class="btn btn-secondary" [routerLink]="['/prenotazioni']" value="Indietro">Indietro</button>
+
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+

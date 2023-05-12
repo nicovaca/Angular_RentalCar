@@ -1,20 +1,19 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {catchError, Observable, throwError } from 'rxjs';
-import { Veicolo } from '../models/veicolo';
-
+import { Prenotazione } from '../models/prenotazione';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VeicoliService {
+export class PrenotazioniService {
 
-   httpOptions = {
+  httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
     })
   };
-  veicoliUrl = 'api/veicoli';  // URL to web api
+  prenotazioniUrl = 'api/prenotazioni';  // URL to web api
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -30,35 +29,42 @@ export class VeicoliService {
   }
   constructor(
     private http: HttpClient,
-    ) {}
+  ) {}
 
 
-  /** GET veicoli from the server */
-  getVeicoli(): Observable<Veicolo[]> {
-    return this.http.get<Veicolo[]>(this.veicoliUrl)
+  /** GET prenotazioni from the server */
+  getPrenotazioni(): Observable<Prenotazione[]> {
+    return this.http.get<Prenotazione[]>(this.prenotazioniUrl)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  getVeicoloById(id:number){
-    const url = `${this.veicoliUrl}/${id}`;
-    return this.http.get<Veicolo>(url)
+  getPeriodoPrenotazione(): Observable<[]> {
+    return this.http.get<[]>('api/periodoPrenotazione')
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getPrenotazioneById(id:number){
+    const url = `${this.prenotazioniUrl}/${id}`;
+    return this.http.get<Prenotazione>(url)
       .pipe(
         catchError(this.handleError)
       );
   }
   /** POST: add to the database */
-  addVeicolo(veicolo: Veicolo): Observable<Veicolo> {
-    return this.http.post<Veicolo>(this.veicoliUrl, veicolo, this.httpOptions)
+  addPrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {
+    return this.http.post<Prenotazione>(this.prenotazioniUrl, prenotazione, this.httpOptions)
       .pipe(
         catchError(this.handleError)
       );
   }
 
   /** DELETE: delete from the server */
-  deleteVeicolo(id: number): Observable<unknown> {
-    const url = `${this.veicoliUrl}/${id}`; // DELETE api/veicoli
+  deletePrenotazione(id: number): Observable<unknown> {
+    const url = `${this.prenotazioniUrl}/${id}`; // DELETE api/prenotazioni
     return this.http.delete(url, this.httpOptions)
       .pipe(
         catchError(this.handleError)
@@ -66,16 +72,13 @@ export class VeicoliService {
   }
 
   /** PUT: update on the server. Returns the updated upon success. */
-  updateVeicolo(veicolo: Veicolo): Observable<any> {
+  updatePrenotazione(prenotazione: Prenotazione): Observable<any> {
     this.httpOptions.headers =
       this.httpOptions.headers.set('Authorization', 'my-new-auth-token');
-    return this.http.put(this.veicoliUrl , veicolo, this.httpOptions)
-     .pipe(
+    return this.http.put(this.prenotazioniUrl , prenotazione, this.httpOptions)
+      .pipe(
         catchError(this.handleError)
 
       );
   }
-
-
-
 }

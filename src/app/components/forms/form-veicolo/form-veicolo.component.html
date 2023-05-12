@@ -37,19 +37,14 @@
           <select class="form-control" name="tipoVeicolo" id="tipoVeicolo"
                   ngModel required
                   [(ngModel)]="veicolo.tipoVeicolo" name="tipoVeicolo">
-            <option *ngFor="let tipo of stateTypes" [value]="tipo" [label]="tipo"></option>
+            <option *ngFor="let tipo of veicoloTypes" [value]="tipo" [label]="tipo"></option>
           </select>
         </div>
 
 
         <br>
         <div class="input-group form-group align-bottom">
-          <!--                <div *ngIf="veicoloIdFromRoute!=0">-->
-          <!--                  <button type="submit" [disabled]="!form.valid" (click)="saveOrUpdateUtente()" class="btn btn-primary" >Modifica</button>-->
-          <!--                </div>-->
-          <!--                <div *ngIf="veicoloIdFromRoute===0">-->
-          <!--                  <button (click)="saveOrUpdateUtente()" type="submit" [disabled]="!form.valid" class="btn btn-primary" >Crea</button>-->
-          <!--                </div>-->
+
           <div *ngIf="veicoloIdFromRoute!=0">
             <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Modifica</button>
           </div>

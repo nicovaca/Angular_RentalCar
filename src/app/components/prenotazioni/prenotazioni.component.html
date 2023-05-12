@@ -1,18 +1,11 @@
-
 <router-outlet></router-outlet>
 
 <br><br>
-&nbsp;<app-my-button [buttonConfig]="buttonListPrenotazione"
-               [routerLink]="['/prenotazioni']"
-></app-my-button>
-<br><br>
 <app-my-table
   [tableConfig]="headersTable"
-  [data]="utenti"
+  [data]="prenotazioni"
+
   (emitter)="getAction($event.action, $event.object)"
 >
 
 </app-my-table>
-
-
-

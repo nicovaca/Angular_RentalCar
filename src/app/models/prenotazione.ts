@@ -4,7 +4,8 @@ import { Veicolo } from "./veicolo";
 
 export interface Prenotazione {
   id:number;
-  periodoPrenotazione:PeriodoPrenotazione;
+  dataInizio:Date;
+  dataFine:Date;
   approvazione:boolean;
   utente:Utente;
   veicolo:Veicolo;
