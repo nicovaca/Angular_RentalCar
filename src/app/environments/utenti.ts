@@ -1,7 +1,7 @@
-import { Utenti } from "../models/utenti";
+import { Utente } from "../models/utente";
 
-export const utenti: Utenti[] = [
-  {id:1,nome: "Luca", cognome: 'Rossi', email: "lucross@gmail.com", eta:25},
+export const utenti: Utente[] = [
+ /* {id:1,nome: "Luca", cognome: 'Rossi', email: "lucross@gmail.com", eta:25},
   {id:2,nome: "Marco", cognome: 'Verdi', email: "marverd@gmail.com", eta:18},
   {id:3,nome: "Anna", cognome: 'Bianchi', email: "annbianc@gmail.com", eta:40},
   {id:4,nome: "Nicola", cognome: 'Vacalebre', email: "nikvac@gmail.com", eta:29},
@@ -23,6 +23,6 @@ export const utenti: Utenti[] = [
   {id:17,nome: "Maria", cognome: 'Verdi', email: "marverd@gmail.com", eta:43},
   {id:18,nome: "Giuseppe", cognome: 'Monte', email: "giomont@gmail.com", eta:28},
   {id:19,nome: "Mino", cognome: 'Zaccuri', email: "minzac@gmail.com", eta:25},
-  {id:20,nome: "Marco", cognome: 'Moccia', email: "marmocc@gmail.com", eta:63}
+  {id:20,nome: "Marco", cognome: 'Moccia', email: "marmocc@gmail.com", eta:63}*/
 
 ];

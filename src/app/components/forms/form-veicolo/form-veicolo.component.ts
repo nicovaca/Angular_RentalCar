@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Utenti} from 'src/app/models/utenti';
-
 import {FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Veicolo} from 'src/app/models/veicolo';
@@ -62,7 +60,7 @@ export class FormVeicoloComponent {
   }
 
 
-  saveOrUpdateUtente() {
+  saveOrUpdateVeicolo() {
     if (this.veicoloIdFromRoute != 0) {
       this.veicoloService.addVeicolo(this.veicolo).subscribe(veicolo => this.veicoli.push(veicolo))
       this.router.navigate(['veicoli']);

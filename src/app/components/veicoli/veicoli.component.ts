@@ -5,9 +5,7 @@ import {MyTableActionEnum} from 'src/app/configs/configClass/my-table-action-enu
 import {MyButtonConfig} from 'src/app/configs/my-button-config/my-button-config';
 import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
 import {utenti} from 'src/app/environments/utenti';
-import {Utenti} from 'src/app/models/utenti';
 import {Veicolo} from 'src/app/models/veicolo';
-import {UserService} from 'src/app/services/user.service';
 import {VeicoliService} from 'src/app/services/veicoli.service';
 
 @Component({
@@ -18,11 +16,9 @@ import {VeicoliService} from 'src/app/services/veicoli.service';
 export class VeicoliComponent implements OnInit {
 
   veicoli: Veicolo[] = [];
-  data: Utenti[] = utenti;
 
 
   constructor(
-    private userService: UserService,
     private router: Router,
     private veicoliService: VeicoliService,
   ) {

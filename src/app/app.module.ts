@@ -33,6 +33,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpClientModule } from '@angular/common/http';
 import { FormVeicoloComponent } from './components/forms/form-veicolo/form-veicolo.component';
 import { FormUtenteComponent } from './components/forms/form-utente/form-utente.component';
+import { UtentiComponent } from './components/utenti/utenti.component';
 
 
 
@@ -54,7 +55,8 @@ import { FormUtenteComponent } from './components/forms/form-utente/form-utente.
     FooterComponent,
     HomepageComponent,
     VeicoliComponent,
-    FormVeicoloComponent
+    FormVeicoloComponent,
+    UtentiComponent
 
   ],
   imports: [
@@ -73,9 +75,10 @@ import { FormUtenteComponent } from './components/forms/form-utente/form-utente.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataServiceService),
     RouterModule.forRoot([
       { path: '', component: HomepageComponent},
-      { path: 'utenti/:id', component: FormUtenteComponent},
       { path: 'veicoli', component: VeicoliComponent},
       { path: 'veicoli/:id', component: FormVeicoloComponent},
+      { path: 'utenti', component: UtentiComponent},
+      { path: 'utenti/:id', component: FormUtenteComponent},
 
     ])
   ],

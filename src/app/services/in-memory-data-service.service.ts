@@ -5,6 +5,7 @@ import {Ruolo} from '../models/ruolo';
 import {TipoVeicolo} from '../models/tipo-veicolo';
 import {Veicolo} from '../models/veicolo';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -78,9 +79,9 @@ export class InMemoryDataServiceService implements InMemoryDbService {
     ];
 
     const periodoPrenotazione = [
-      {id: 1, dataInizio: new Date('2022-10-03'), dataFine: new Date('2022-10-10')},
-      {id: 2, dataInizio: new Date('2022-11-04'), dataFine: new Date('2022-11-15')},
-      {id: 3, dataInizio: new Date('2022-05-03'), dataFine: new Date('2022-05-10')},
+      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString()},
+      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString()},
+      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString()},
 
     ];
 
@@ -89,18 +90,18 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         id: 1,
         nome: 'Mario',
         cognome: 'Rossi',
-        dataNascita: new Date('1996-05-03'),
+        dataNascita: new Date('1996-05-03').toLocaleDateString(),
         email: 'mariross@gmai.com',
         username: 'marRoss',
         password: 'marRoss',
         ruolo: Ruolo.CUSTOMER,
-        prenotazioni: undefined
+        prenotazioni: [prenotazioni[0].id, prenotazioni[2].id]
       },
       {
         id: 2,
         nome: 'Anna',
         cognome: 'Biondi',
-        dataNascita: new Date('1996-05-03'),
+        dataNascita: new Date('1996-05-03').toLocaleDateString(),
         email: 'annbiond@gmai.com',
         username: 'annb',
         password: 'annb',
@@ -111,14 +112,14 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         id: 3,
         nome: 'Giuseppe',
         cognome: 'Verdi',
-        dataNascita: new Date('1996-05-03'),
+        dataNascita: new Date('1996-05-03').toLocaleDateString(),
         email: 'giusver@gmai.com',
         username: 'giuv',
         password: 'giuv',
         ruolo: Ruolo.CUSTOMER,
-        prenotazioni: undefined
+        prenotazioni: prenotazioni[1].id
       },
-      {
+      /*{
         id: -1,
         nome: 'Admin',
         cognome: 'Admin',
@@ -127,6 +128,17 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         username: 'admin',
         password: 'admin',
         ruolo: Ruolo.SUPERUSER,
+        prenotazioni: undefined
+      },*/
+      {
+        id: 4,
+        nome: 'Simona',
+        cognome: 'Scala',
+        dataNascita: new Date('1986-12-13').toLocaleDateString(),
+        email: 'simscal@gmail.com',
+        username: 'simscal',
+        password: 'simscal',
+        ruolo: Ruolo.CUSTOMER,
         prenotazioni: undefined
       },
     ];

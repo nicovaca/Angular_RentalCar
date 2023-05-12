@@ -1,52 +1,54 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
-import {MyAction} from './configs/configClass/my-action';
-import {MyTableActionEnum} from './configs/configClass/my-table-action-enum';
-import {MyButtonConfig} from './configs/my-button-config/my-button-config';
-import {MyTableConfig} from './configs/my-table-config/my-table-config';
-import {utenti} from './environments/utenti';
-import {FormBuilder} from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { MyAction } from 'src/app/configs/configClass/my-action';
+import { MyTableActionEnum } from 'src/app/configs/configClass/my-table-action-enum';
+import { MyTableConfig } from 'src/app/configs/my-table-config/my-table-config';
+import { Utente } from 'src/app/models/utente';
+import { UtentiService } from 'src/app/services/utenti.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-utenti',
+  templateUrl: './utenti.component.html',
+  styleUrls: ['./utenti.component.css']
 })
-export class AppComponent {
-  title = 'Demo';
-/*  data: Utenti[] = utenti;
+export class UtentiComponent {
+
+  utenti: Utente[] = [];
+
 
 
   constructor(
-    private userService: UserService,
-    private router: Router
+    private utenteService:UtentiService,
+    private router: Router,
+
   ) {
   }
 
 
 
-  bottoneHome: MyButtonConfig = {
-    customCssClass: 'btn btn-primary',
-    icon: 'fa fa-home',
-    text: 'Home'
+  ngOnInit(): void {
+    this.getutenti();
   }
 
-  bottoneElimina: MyButtonConfig = {
-    customCssClass: 'btn btn-danger',
-    icon: 'fa fa-trash',
-    text: 'Elimina'
+
+  getutenti() {
+    this.utenteService.getutenti()
+      .subscribe(utenti => (this.utenti=utenti));
   }
+
 
   headersTable: MyTableConfig = {
     headers: [
       {key: "nome", label: "Nome"},
       {key: "cognome", label: "Cognome"},
-      {key: "email", label: "Email"},
-      {key: "eta", label: "Età"}
+      {key: "email", label: "email"},
+      {key: "username", label: "Username"},
+      {key: "dataNascita", label: "Data di Nascita"},
+      {key: "prenotazioni", label: "Id Prenotazione"}
+
     ],
-    order: {defaultColumn: "nome", orderType: "desc"},
-    search: {columns: ["nome", "cognome", "email"]},
+    order: {defaultColumn: "id", orderType: "desc"},
+    search: {columns: ["nome", "cognome","email","username"]},
     pagination: {itemPerPage: 5, itemPerPageOptions: [5, 10, 15]},
     actions: [
       {
@@ -84,8 +86,8 @@ export class AppComponent {
     switch (action.type) {
       case MyTableActionEnum.DELETE:
 
-        this.data = this.data.filter(utente => utente.id !== id);
-        this.userService.deleteUser(id)
+        this.utenti = this.utenti.filter(u => u.id !== id);
+        this.utenteService.deleteUtente(id).subscribe();
         break;
 
       case MyTableActionEnum.EDIT:
@@ -98,7 +100,5 @@ export class AppComponent {
         break;
     }
 
-  }*/
-
-
+  }
 }
