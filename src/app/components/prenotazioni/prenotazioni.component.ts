@@ -16,7 +16,8 @@ export class PrenotazioniComponent implements OnInit {
 
   prenotazioni: Prenotazione[] = []
   periodoPrenotazione: PeriodoPrenotazione[] = []
-  prenotazione!:Prenotazione
+  prenotazione!: Prenotazione
+
 
   constructor(
     private prenotazioneService: PrenotazioniService,
@@ -74,6 +75,12 @@ export class PrenotazioniComponent implements OnInit {
     ]
   }
 
+  eliminaPrenotazione(dataInizio: Date) {
+    if (new Date(dataInizio).getTime() - new Date().getTime() <= 2) {
+      return false
+    } else
+      return true
+  }
 
   getAction(action: MyAction, object: any) {
 
@@ -82,14 +89,18 @@ export class PrenotazioniComponent implements OnInit {
     console.log(id)
     switch (action.type) {
       case MyTableActionEnum.DELETE:
+        if (this.eliminaPrenotazione(object.dataInizio)) {
 
-        this.prenotazioni = this.prenotazioni.filter(p => p.id !== id);
-        this.prenotazioneService.deletePrenotazione(id).subscribe();
+          this.prenotazioni = this.prenotazioni.filter(p => p.id !== id);
+          this.prenotazioneService.deletePrenotazione(id).subscribe();
+        } else {
+          window.alert('La prenotazione non può essere cancellata.')
+        }
         break;
 
       case MyTableActionEnum.EDIT:
-        let prenotazione=this.prenotazioni.filter(p => p.id === id).shift()
-        let idUtente = prenotazione? prenotazione.utenteId : 0
+        let prenotazione = this.prenotazioni.filter(p => p.id === id).shift()
+        let idUtente = prenotazione ? prenotazione.utenteId : 0
         this.router.navigate(['prenotazioni/prenotazioniCustomer/', id, idUtente])
         break;
 
