@@ -89,7 +89,7 @@ export class PrenotazioniComponent implements OnInit {
 
       case MyTableActionEnum.EDIT:
         let prenotazione=this.prenotazioni.filter(p => p.id === id).shift()
-        let idUtente = prenotazione? prenotazione.utente : 0
+        let idUtente = prenotazione? prenotazione.utenteId : 0
         this.router.navigate(['prenotazioni/prenotazioniCustomer/', id, idUtente])
         break;
 
