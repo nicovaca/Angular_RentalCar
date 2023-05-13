@@ -4,6 +4,7 @@ import {MyAction} from 'src/app/configs/configClass/my-action';
 import {MyTableActionEnum} from 'src/app/configs/configClass/my-table-action-enum';
 import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
 import {Prenotazione} from 'src/app/models/prenotazione';
+import { Utente } from 'src/app/models/utente';
 import {PrenotazioniService} from 'src/app/services/prenotazioni.service';
 import {UtentiService} from 'src/app/services/utenti.service';
 
@@ -18,6 +19,7 @@ export class ProfiloCustomerComponent implements OnInit {
   prenotazioni: Prenotazione[] = []
   prenotazione!: Prenotazione
   utente: any
+  customer!:Utente
 
   constructor(
     private utenteService: UtentiService,
@@ -32,6 +34,7 @@ export class ProfiloCustomerComponent implements OnInit {
     this.utente = Number(routeParams.get('id'));
     console.log(this.utente)
     this.getPrenotazioneCustomer(this.utente);
+    this.getCustomer(this.utente)
   }
 
   /*getPrenotazioneCustomer(id: number) {
@@ -49,6 +52,11 @@ export class ProfiloCustomerComponent implements OnInit {
       this.getPrenotazioni()
   }
 
+  getCustomer(id:number){
+    this.utenteService.getUtenteById(this.utente).subscribe((u)=>{
+      this.customer=u
+    })
+  }
 
   getPrenotazioniUtente(utente:any) {
     this.prenotazioneService.getPrenotazioni()

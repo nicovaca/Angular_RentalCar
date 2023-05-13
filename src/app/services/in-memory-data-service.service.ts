@@ -130,6 +130,20 @@ export class InMemoryDataServiceService implements InMemoryDbService {
       },
     ];
 
+    const admin = [
+      {
+        id: -1,
+        nome: 'Admin',
+        cognome: 'Admin',
+        dataNascita: undefined,
+        email: undefined,
+        username: 'admin',
+        password: 'admin',
+        ruolo: Ruolo.SUPERUSER,
+        prenotazioni: undefined
+      }
+    ]
+
     const prenotazioni = [
       {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString(), approvazione: true, utente:1, utenteId: 1, veicolo: 6},
       {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString(), approvazione: true, utente:2,utenteId: 3, veicolo: 3},
@@ -144,7 +158,7 @@ export class InMemoryDataServiceService implements InMemoryDbService {
       {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString()},
 
     ];
-    return {veicoli, prenotazioni, utenti, periodoPrenotazione};
+    return {veicoli, prenotazioni, utenti, periodoPrenotazione,admin};
   }
 
 

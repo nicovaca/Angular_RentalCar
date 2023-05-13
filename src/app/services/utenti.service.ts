@@ -14,6 +14,7 @@ export class UtentiService {
     })
   };
   utentiUrl = 'api/utenti';  // URL to web api
+  adminUrl='api/admin'
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -35,6 +36,14 @@ export class UtentiService {
   /** GET utenti from the server */
   getutenti(): Observable<Utente[]> {
     return this.http.get<Utente[]>(this.utentiUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getAdmin(){
+    //const url:string = `api/admin`;
+    return this.http.get<Utente>(this.adminUrl)
       .pipe(
         catchError(this.handleError)
       );
