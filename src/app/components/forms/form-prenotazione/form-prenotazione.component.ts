@@ -4,6 +4,7 @@ import {Prenotazione} from 'src/app/models/prenotazione';
 import {Utente} from 'src/app/models/utente';
 import {Veicolo} from 'src/app/models/veicolo';
 import {PrenotazioniService} from 'src/app/services/prenotazioni.service';
+import { UtentiService } from 'src/app/services/utenti.service';
 import {VeicoliService} from 'src/app/services/veicoli.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class FormPrenotazioneComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private prenotazioneService: PrenotazioniService,
               private veicoloService: VeicoliService,
+              private utenteService: UtentiService,
               private router: Router) {
   }
 
@@ -32,6 +34,8 @@ export class FormPrenotazioneComponent implements OnInit {
     this.prenotazioneIdFromRoute = Number(routeParams.get('id'));
     this.utenteId = Number(routeParams.get('idUtente'));
 
+
+
     if (this.prenotazioneIdFromRoute !== 0) {
       this.prenotazioneService.getPrenotazioneById(this.prenotazioneIdFromRoute).subscribe((prenotazione) => {
         this.prenotazione = prenotazione
@@ -39,6 +43,10 @@ export class FormPrenotazioneComponent implements OnInit {
       })
 
     } else {
+      this.utenteService.getUtenteById(this.utenteId).subscribe((utente) => {
+        this.utente = utente
+      })
+      console.log(this.utente)
       this.prenotazioneService.getPrenotazioni().subscribe((r) => {
         this.id = r.length + 1
         console.log(this.id)
@@ -50,10 +58,13 @@ export class FormPrenotazioneComponent implements OnInit {
           utente: this.utente,
           veicolo: this.veicolo
         }
+
       })
 
 
+
     }
+
     this.getVeicoli()
     console.log(this.veicoli)
   }

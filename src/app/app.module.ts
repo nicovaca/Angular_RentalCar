@@ -90,7 +90,7 @@ import { ProfiloCustomerComponent } from './components/profilo-customer/profilo-
       { path: 'utenti', component: UtentiComponent},
       { path: 'utenti/:id', component: FormUtenteComponent},
       { path: 'prenotazioni', component: PrenotazioniComponent},
-      { path: 'prenotazioni/:id', component: FormPrenotazioneComponent},
+      { path: 'prenotazioni/prenotazioniCustomer/:id/:idUtente', component: FormPrenotazioneComponent},
       { path: 'login', component: FormLoginComponent},
       { path: 'prenotazioni/prenotazioniCustomer/:id', component: ProfiloCustomerComponent },
 

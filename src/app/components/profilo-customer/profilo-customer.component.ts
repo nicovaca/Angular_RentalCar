@@ -34,30 +34,12 @@ export class ProfiloCustomerComponent implements OnInit {
     this.getPrenotazioneCustomer(this.utente);
   }
 
-  /* getPrenotazioneCustomer(id: number) {
-
-     this.prenotazioneService.getPrenotazioni()
-       .subscribe(prenotazioni =>
-         this.prenotazioniUtente=prenotazioni.filter(p => p.utente.id === id)
-       );
-   }*/
   /*getPrenotazioneCustomer(id: number) {
     this.prenotazioneService.getPrenotazioniByIdUtente(id)
       .subscribe(prenotazioni =>
            this.prenotazioniUtente=prenotazioni.filter(p => p.utente.id === id)
          );
   }*/
-
-  /* search(searchTerm: string) {
-     this.editHero = undefined;
-     if (searchTerm) {
-       this.heroesService
-         .searchHeroes(searchTerm)
-         .subscribe(heroes => (this.heroes = heroes));
-     } else {
-       this.getHeroes();
-     }
-   }*/
 
   getPrenotazioneCustomer(utente: any) {
     console.log(utente)
@@ -127,12 +109,12 @@ export class ProfiloCustomerComponent implements OnInit {
         break;
 
       case MyTableActionEnum.EDIT:
-        this.router.navigate(['prenotazioni/', id])
+        this.router.navigate(['prenotazioni/prenotazioniCustomer/', id,this.utente])
         break;
 
       case MyTableActionEnum.NEW_ROW:
         let idNew = 0
-        this.router.navigate(['prenotazioni/', idNew])
+        this.router.navigate(['prenotazioni/prenotazioniCustomer/', idNew,this.utente])
         break;
     }
 

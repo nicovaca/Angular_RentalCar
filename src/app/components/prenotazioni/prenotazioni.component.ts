@@ -16,6 +16,7 @@ export class PrenotazioniComponent implements OnInit {
 
   prenotazioni: Prenotazione[] = []
   periodoPrenotazione: PeriodoPrenotazione[] = []
+  prenotazione!:Prenotazione
 
   constructor(
     private prenotazioneService: PrenotazioniService,
@@ -87,7 +88,9 @@ export class PrenotazioniComponent implements OnInit {
         break;
 
       case MyTableActionEnum.EDIT:
-        this.router.navigate(['prenotazioni/', id])
+        let prenotazione=this.prenotazioni.filter(p => p.id === id).shift()
+        let idUtente = prenotazione? prenotazione.utente : 0
+        this.router.navigate(['prenotazioni/prenotazioniCustomer/', id, idUtente])
         break;
 
       case MyTableActionEnum.NEW_ROW:
