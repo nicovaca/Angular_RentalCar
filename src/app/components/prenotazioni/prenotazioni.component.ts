@@ -49,7 +49,7 @@ export class PrenotazioniComponent implements OnInit {
       {key: "dataInizio", label: "Data Inizio Prenotazione"},
       {key: "dataFine", label: "Data Inizio Prenotazione"},
       {key: "approvazione", label: "Approvazione"},
-      {key: "utente", label: "Id Utente"},
+      {key: "utenteId", label: "Id Utente"},
       {key: "veicolo", label: "Id Veicolo"}
 
     ],

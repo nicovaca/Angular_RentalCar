@@ -56,7 +56,8 @@ export class FormPrenotazioneComponent implements OnInit {
           dataFine: new Date(),
           approvazione: false,
           utente: this.utente,
-          veicolo: this.veicolo
+          veicolo: this.veicolo,
+          utenteId:this.utente.id
         }
 
       })

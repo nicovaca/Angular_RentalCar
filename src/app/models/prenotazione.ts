@@ -9,4 +9,5 @@ export interface Prenotazione {
   approvazione:boolean;
   utente:Utente;
   veicolo:Veicolo;
+  utenteId?:number
 }
