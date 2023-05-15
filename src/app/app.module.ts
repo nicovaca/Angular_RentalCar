@@ -39,6 +39,8 @@ import { FormPrenotazioneComponent } from './components/forms/form-prenotazione/
 import { FormLoginComponent } from './components/forms/form-login/form-login.component';
 import { PageNotFoundComponent } from './components/template/page-not-found/page-not-found.component';
 import { ProfiloCustomerComponent } from './components/profilo-customer/profilo-customer.component';
+import {RouteGuardService} from "./services/route-guard.service";
+import { LogoutComponent } from './components/forms/logout/logout.component';
 
 
 
@@ -66,7 +68,8 @@ import { ProfiloCustomerComponent } from './components/profilo-customer/profilo-
     FormPrenotazioneComponent,
     FormLoginComponent,
     PageNotFoundComponent,
-    ProfiloCustomerComponent
+    ProfiloCustomerComponent,
+    LogoutComponent
 
   ],
   imports: [
@@ -84,20 +87,21 @@ import { ProfiloCustomerComponent } from './components/profilo-customer/profilo-
     NgbModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataServiceService),
     RouterModule.forRoot([
-      { path: '', component: HomepageComponent},
       { path: 'veicoli', component: VeicoliComponent},
-      { path: 'veicoli/:id', component: FormVeicoloComponent},
-      { path: 'utenti', component: UtentiComponent},
-      { path: 'utenti/:id', component: FormUtenteComponent},
-      { path: 'prenotazioni', component: PrenotazioniComponent},
-      { path: 'prenotazioni/prenotazioniCustomer/:id/:idUtente', component: FormPrenotazioneComponent},
+      { path: 'veicoli/:id', component: FormVeicoloComponent,canActivate: [RouteGuardService]},
+      { path: 'utenti', component: UtentiComponent,canActivate: [RouteGuardService]},
+      { path: 'utenti/:id', component: FormUtenteComponent,canActivate: [RouteGuardService]},
+      { path: 'prenotazioni', component: PrenotazioniComponent, canActivate: [RouteGuardService]},
+      { path: 'prenotazioni/prenotazioniCustomer/:id/:idUtente', component: FormPrenotazioneComponent,canActivate: [RouteGuardService]},
       { path: 'login', component: FormLoginComponent},
-      { path: 'prenotazioni/prenotazioniCustomer/:id', component: ProfiloCustomerComponent },
+      { path:'logout', component: LogoutComponent},
+      { path: 'prenotazioni/prenotazioniCustomer/:id', component: ProfiloCustomerComponent,canActivate: [RouteGuardService] },
 
+      { path: '', component: HomepageComponent, pathMatch:'full'},
       { path: '**', component: PageNotFoundComponent },
     ])
   ],
-  providers: [],
+  providers: [RouteGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

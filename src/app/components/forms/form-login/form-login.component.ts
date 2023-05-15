@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { Ruolo } from 'src/app/models/ruolo';
+import {Ruolo} from 'src/app/models/ruolo';
+import {AuthenticationService} from 'src/app/services/authentication.service';
 import {UtentiService} from 'src/app/services/utenti.service';
 
 @Component({
@@ -15,15 +16,16 @@ export class FormLoginComponent implements OnInit {
 
   usernameTest!: string
   passwordTest!: string
-  id!:number
-  ruolo!:Ruolo
+  id!: number
+  ruolo!: Ruolo
 
-  usernameAdmin!:string
-  passwordAdmin!:string
+  usernameAdmin!: string
+  passwordAdmin!: string
 
   constructor(
     private utenteService: UtentiService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) {
   }
 
@@ -31,22 +33,29 @@ export class FormLoginComponent implements OnInit {
     this.utenteService.getUtenteById(3).subscribe((u) => {
       this.usernameTest = u.username
       this.passwordTest = u.password
-      this.id=u.id
-      this.ruolo=u.ruolo
+      this.id = u.id
+      this.ruolo = u.ruolo
 
     })
-    this.utenteService.getAdmin().subscribe((u)=>{
-      this.usernameAdmin = u.username
-      this.passwordAdmin = u.password
-    })
-
+    console.log('isUserLoggedIn:',this.authService.isUserLoggedIn)
   }
 
   onLogin() {
     if (this.username === this.usernameTest && this.password === this.passwordTest) {
       this.router.navigate(['prenotazioni/prenotazioniCustomer/', this.id])
-    }else if(this.username === this.usernameAdmin && this.password === this.passwordAdmin){
-      this.router.navigate(['prenotazioni'])
+    } else {
+      this.usernameAdmin = this.username
+      this.passwordAdmin = this.password
+      this.authService.login(this.usernameAdmin, this.passwordAdmin)
+        .subscribe(data => {
+          console.log("Is Login Success: " + data);
+          console.log('isUserLoggedIn:',this.authService.isUserLoggedIn)
+
+          if (data) this.router.navigate(['/utenti'])
+            .then(() => {
+              window.location.reload();
+            });
+        });
     }
   }
 }
