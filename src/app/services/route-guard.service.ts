@@ -23,11 +23,21 @@ export class RouteGuardService implements CanActivate {
   checkLogin(url: string): true | UrlTree  {
     console.log("Url: " + url)
     let val: string = sessionStorage.getItem('isUserLoggedIn')!;
+    let val2: string = sessionStorage.getItem('ruolo')!;
     console.log('checkLogin:', val)
-    if (val != null && val == "true") {
-      if (url == "/login") {
+    console.log('val2:', val2, typeof(val2))
+    if (val != null && val == "true" && val2 ==='admin') {
+      if (url == "/login" ) {
         return this.router.parseUrl('/utenti');
-      } else {
+      }
+      else {
+        return true;
+      }
+    }else if (val != null && val == "true" && val2 ==='customer'){
+      if (url == "/login" ) {
+        return this.router.parseUrl('/prenotazioni');
+      }
+      else {
         return true;
       }
     }

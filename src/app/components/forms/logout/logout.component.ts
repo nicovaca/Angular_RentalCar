@@ -12,6 +12,8 @@ export class LogoutComponent implements OnInit{
   constructor(private authService : AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    sessionStorage.removeItem('isUserLoggedIn')
+    sessionStorage.removeItem("ruolo")
     this.authService.logout();
     this.router.navigate(['/'])
       .then(() => {

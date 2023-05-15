@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Ruolo} from 'src/app/models/ruolo';
+import { Utente } from 'src/app/models/utente';
 import {AuthenticationService} from 'src/app/services/authentication.service';
 import {UtentiService} from 'src/app/services/utenti.service';
 
@@ -13,7 +14,7 @@ export class FormLoginComponent implements OnInit {
 
   username!: string
   password!: string
-
+  utenti:Utente[]=[]
   usernameTest!: string
   passwordTest!: string
   id!: number
@@ -30,32 +31,37 @@ export class FormLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.utenteService.getUtenteById(3).subscribe((u) => {
-      this.usernameTest = u.username
-      this.passwordTest = u.password
-      this.id = u.id
-      this.ruolo = u.ruolo
-
-    })
+    this.utenteService.getutenti().subscribe(u => this.utenti=u)
     console.log('isUserLoggedIn:',this.authService.isUserLoggedIn)
   }
 
   onLogin() {
-    if (this.username === this.usernameTest && this.password === this.passwordTest) {
-      this.router.navigate(['prenotazioni/prenotazioniCustomer/', this.id])
-    } else {
       this.usernameAdmin = this.username
       this.passwordAdmin = this.password
-      this.authService.login(this.usernameAdmin, this.passwordAdmin)
+
+
+    this.authService.login(this.usernameAdmin, this.passwordAdmin)
         .subscribe(data => {
           console.log("Is Login Success: " + data);
           console.log('isUserLoggedIn:',this.authService.isUserLoggedIn)
 
-          if (data) this.router.navigate(['/utenti'])
+          if (data && this.authService.ruolo=='admin') this.router.navigate(['/utenti'])
             .then(() => {
               window.location.reload();
             });
+          else if (data && this.authService.ruolo=='customer'){
+
+            let utente = this.utenti.find(u => u.username == this.usernameAdmin && u.password==this.passwordAdmin)
+           console.log(utente)
+            if (utente)
+              this.id=utente.id
+
+            this.router.navigate(['/prenotazioni/prenotazioniCustomer/',this.id])
+            .then(() => {
+              window.location.reload();
+            });
+          }
         });
     }
-  }
+
 }
