@@ -22,6 +22,10 @@ export class FormPrenotazioneComponent implements OnInit {
   veicolo!: Veicolo
   veicoli: Veicolo[] = []
 
+  isUserLoggedIn = false;
+  ruolo: string = ''
+
+
   constructor(private route: ActivatedRoute,
               private prenotazioneService: PrenotazioniService,
               private veicoloService: VeicoliService,
@@ -34,6 +38,18 @@ export class FormPrenotazioneComponent implements OnInit {
     this.prenotazioneIdFromRoute = Number(routeParams.get('id'));
     this.utenteId = Number(routeParams.get('idUtente'));
 
+    let storeData = sessionStorage.getItem("isUserLoggedIn");
+    let ruolo = sessionStorage.getItem("ruolo");
+    console.log("StoreData: " + storeData);
+
+    if (storeData != null && storeData == "true")
+      this.isUserLoggedIn = true;
+    if (ruolo=='admin'){
+      this.ruolo=ruolo
+    }else if (ruolo=='customer')
+      this.ruolo=ruolo
+    else
+      this.isUserLoggedIn = false;
 
 
     if (this.prenotazioneIdFromRoute !== 0) {

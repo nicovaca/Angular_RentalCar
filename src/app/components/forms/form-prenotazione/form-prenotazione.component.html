@@ -40,7 +40,7 @@
           </select>
         </div>
 
-        <div class="input-group form-group" *ngIf="prenotazioneIdFromRoute!=0">
+        <div class="input-group form-group" *ngIf="prenotazioneIdFromRoute!=0 && ruolo=='admin'">
           <label for="approva">Approvazione</label>
           <select class="form-control" name="approvazione" id="approva"
                   ngModel required

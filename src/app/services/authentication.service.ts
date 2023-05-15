@@ -44,6 +44,7 @@ export class AuthenticationService {
   logout(): void {
     this.isUserLoggedIn = false;
     sessionStorage.removeItem('isUserLoggedIn');
+    sessionStorage.removeItem('ruolo');
   }
 
   getToken = (): string => {

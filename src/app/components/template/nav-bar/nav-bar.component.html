@@ -16,12 +16,14 @@
         </li>
 
         <li class="nav-item">
+          <div *ngIf="ruolo=='admin'">
           <a class="nav-link" [routerLink]="['utenti']"> Profilo </a>
+          </div>
+          <div *ngIf="ruolo=='customer'">
+            <a class="nav-link" [routerLink]="['prenotazioni/prenotazioniCustomer/']"> Profilo </a>
+          </div>
         </li>
 
-        <!--<li class="nav-item">
-          <a class="nav-link" [routerLink]="['login']"> Login </a>
-        </li>-->
 
         <li class="nav-item">
           <div *ngIf="isUserLoggedIn; else isLogOut">

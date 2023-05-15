@@ -16,7 +16,7 @@ import {VeicoliService} from 'src/app/services/veicoli.service';
 export class VeicoliComponent implements OnInit {
 
   veicoli: Veicolo[] = [];
-
+  isUserLoggedIn:boolean=false
 
   constructor(
     private router: Router,
