@@ -106,17 +106,6 @@ export class InMemoryDataServiceService implements InMemoryDbService {
         ruolo: Ruolo.CUSTOMER,
         prenotazioni: [3,4]
       },
-      /*{
-        id: -1,
-        nome: 'Admin',
-        cognome: 'Admin',
-        dataNascita: undefined,
-        email: undefined,
-        username: 'admin',
-        password: 'admin',
-        ruolo: Ruolo.SUPERUSER,
-        prenotazioni: undefined
-      },*/
       {
         id: 4,
         nome: 'Simona',
@@ -130,35 +119,17 @@ export class InMemoryDataServiceService implements InMemoryDbService {
       },
     ];
 
-    const admin = [
-      {
-        id: -1,
-        nome: 'Admin',
-        cognome: 'Admin',
-        dataNascita: undefined,
-        email: undefined,
-        username: 'admin',
-        password: 'admin',
-        ruolo: Ruolo.SUPERUSER,
-        prenotazioni: undefined
-      }
-    ]
 
     const prenotazioni = [
-      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString(), approvazione: true, utente:1, utenteId: 1, veicolo: 6},
-      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString(), approvazione: true, utente:2,utenteId: 3, veicolo: 3},
+      {id: 1, dataInizio: new Date('2023-10-03').toLocaleDateString(), dataFine: new Date('2023-10-10').toLocaleDateString(), approvazione: true, utente:1, utenteId: 1, veicolo: 6},
+      {id: 2, dataInizio: new Date('2023-11-04').toLocaleDateString(), dataFine: new Date('2023-11-15').toLocaleDateString(), approvazione: true, utente:2,utenteId: 3, veicolo: 3},
       {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString(), approvazione: false, utente:3,utenteId: 3, veicolo: 5},
-      {id: 4, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString(), approvazione: false, utente:3,utenteId: 3, veicolo: 2}
+      {id: 4, dataInizio: new Date('2023-05-03').toLocaleDateString(), dataFine: new Date('2023-05-10').toLocaleDateString(), approvazione: false, utente:3,utenteId: 3, veicolo: 2}
 
     ];
 
-    const periodoPrenotazione = [
-      {id: 1, dataInizio: new Date('2022-10-03').toLocaleDateString(), dataFine: new Date('2022-10-10').toLocaleDateString()},
-      {id: 2, dataInizio: new Date('2022-11-04').toLocaleDateString(), dataFine: new Date('2022-11-15').toLocaleDateString()},
-      {id: 3, dataInizio: new Date('2022-05-03').toLocaleDateString(), dataFine: new Date('2022-05-10').toLocaleDateString()},
 
-    ];
-    return {veicoli, prenotazioni, utenti, periodoPrenotazione,admin};
+    return {veicoli, prenotazioni, utenti};
   }
 
 

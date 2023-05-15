@@ -37,12 +37,6 @@ export class ProfiloCustomerComponent implements OnInit {
     this.getCustomer(this.utente)
   }
 
-  /*getPrenotazioneCustomer(id: number) {
-    this.prenotazioneService.getPrenotazioniByIdUtente(id)
-      .subscribe(prenotazioni =>
-           this.prenotazioniUtente=prenotazioni.filter(p => p.utente.id === id)
-         );
-  }*/
 
   getPrenotazioneCustomer(utente: any) {
     console.log(utente)

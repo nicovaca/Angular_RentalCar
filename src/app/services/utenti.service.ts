@@ -42,7 +42,6 @@ export class UtentiService {
   }
 
   getAdmin(){
-    //const url:string = `api/admin`;
     return this.http.get<Utente>(this.adminUrl)
       .pipe(
         catchError(this.handleError)
@@ -78,7 +77,6 @@ export class UtentiService {
     this.httpOptions.headers =
       this.httpOptions.headers.set('Authorization', 'my-new-auth-token');
     return this.http.put(this.utentiUrl , utente, this.httpOptions)
-      //return this.http.put<Utente>(this.utentiUrl , Utente, this.httpOptions)
       .pipe(
         catchError(this.handleError)
 

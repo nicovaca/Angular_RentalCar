@@ -68,7 +68,7 @@ export class VeicoliComponent implements OnInit {
         type: MyTableActionEnum.NEW_ROW, buttonConfig: {
           customCssClass: 'btn btn-success',
           icon: 'fa fa-plus',
-          text: 'Aggiungi Utente'
+          text: 'Aggiungi Veicolo'
         }, newRowButton: true
       }
 

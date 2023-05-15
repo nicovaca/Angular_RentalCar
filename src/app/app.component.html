@@ -1,31 +1,4 @@
-<!--
-<p>
-  <mat-toolbar color="primary">
-    <span>{{title}}</span>
-  </mat-toolbar>
-</p>
 
-
-<app-my-button
-  [buttonConfig]="bottoneHome"></app-my-button>
-
-
-<app-my-button
-  [buttonConfig]="bottoneElimina"></app-my-button>
-
-<br>
-<router-outlet></router-outlet>
-
-<br><br>
-<app-my-table
-  [tableConfig]="headersTable"
-  [data]="data"
-  (emitter)="getAction($event.action, $event.object)"
->
-</app-my-table>
-
-
--->
 <app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
