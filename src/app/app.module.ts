@@ -87,7 +87,7 @@ import { LogoutComponent } from './components/forms/logout/logout.component';
     NgbModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataServiceService),
     RouterModule.forRoot([
-      { path: 'veicoli', component: VeicoliComponent},
+      { path: 'veicoli', component: VeicoliComponent,canActivate: [RouteGuardService]},
       { path: 'veicoli/:id', component: FormVeicoloComponent,canActivate: [RouteGuardService]},
       { path: 'utenti', component: UtentiComponent,canActivate: [RouteGuardService]},
       { path: 'utenti/:id', component: FormUtenteComponent,canActivate: [RouteGuardService]},

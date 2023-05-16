@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Router} from '@angular/router';
 import {MyAction} from 'src/app/configs/configClass/my-action';
 import {MyTableActionEnum} from 'src/app/configs/configClass/my-table-action-enum';
@@ -6,6 +6,7 @@ import {MyButtonConfig} from 'src/app/configs/my-button-config/my-button-config'
 import {MyTableConfig} from 'src/app/configs/my-table-config/my-table-config';
 import {utenti} from 'src/app/environments/utenti';
 import {Veicolo} from 'src/app/models/veicolo';
+import {AuthenticationService} from 'src/app/services/authentication.service';
 import {VeicoliService} from 'src/app/services/veicoli.service';
 
 @Component({
@@ -16,25 +17,25 @@ import {VeicoliService} from 'src/app/services/veicoli.service';
 export class VeicoliComponent implements OnInit {
 
   veicoli: Veicolo[] = [];
-  isUserLoggedIn:boolean=false
+  actionTable!: MyAction[]
 
   constructor(
     private router: Router,
     private veicoliService: VeicoliService,
+    private authService: AuthenticationService
   ) {
   }
 
 
-
   ngOnInit(): void {
-        this.getVeicoli();
-    }
+    this.getVeicoli();
+  }
 
 
   getVeicoli() {
-        this.veicoliService.getVeicoli()
-          .subscribe(veicoli => (this.veicoli=veicoli));
-    }
+    this.veicoliService.getVeicoli()
+      .subscribe(veicoli => (this.veicoli = veicoli));
+  }
 
 
   headersTable: MyTableConfig = {
@@ -76,9 +77,9 @@ export class VeicoliComponent implements OnInit {
   }
 
 
-  getAction(action: MyAction, object:any) {
+  getAction(action: MyAction, object: any) {
 
-    let id:number = object? object.id : 0
+    let id: number = object ? object.id : 0
 
 
     console.log(id)
@@ -94,7 +95,7 @@ export class VeicoliComponent implements OnInit {
         break;
 
       case MyTableActionEnum.NEW_ROW:
-        let idNew=0
+        let idNew = 0
         this.router.navigate(['veicoli/', idNew])
         break;
     }
